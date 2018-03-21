@@ -5,6 +5,15 @@ class CompostsController < ApplicationController
 
   def index
     @composts = policy_scope(Compost).where.not(deleted: true)
+    @map_composts = @composts.where.not(latitude: nil, longitude: nil)
+
+    @markers = @map_composts.map do |compost|
+      {
+        lat: compost.latitude,
+        lng: compost.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show
