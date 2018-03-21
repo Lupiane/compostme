@@ -1,0 +1,7 @@
+<h2> Les composts à votre disposition </h2>
+<ul>
+  <% @composts.each do |compost| %>
+    <li> <%= compost.address %> - <%= compost.description %> </li>
+  <% end %>
+</ul>
+<h3><%= link_to 'ajouter un compost', new_compost_path %></h3>
