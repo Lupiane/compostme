@@ -36,4 +36,10 @@ class CompostsController < ApplicationController
       render :edit
     end
   end
+
+  private
+
+  def compost_params
+    params.require(:compost).permit(:address, :description)
+  end
 end
