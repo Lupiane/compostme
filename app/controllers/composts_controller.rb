@@ -1,20 +1,23 @@
 class CompostsController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_compost, only: [:edit, :update, :show]
 
   def index
-    @composts = Compost.all
+    @composts = policy_scope(Compost).all
   end
 
   def show
-    @compost = Compost.find(params[:id])
   end
 
   def new
     @compost = Compost.new
+    authorize @compost
   end
 
   def create
     @compost = Compost.new(compost_params)
+    authorize @compost
     @compost.user = current_user
     if @compost.save
       redirect_to compost_path(@compost)
@@ -24,11 +27,9 @@ class CompostsController < ApplicationController
   end
 
   def edit
-    @compost = Compost.find(params[:id])
   end
 
   def update
-    @compost = Compost.find(params[:id])
     @compost.update(compost_params)
     if @compost.save
       redirect_to compost_path(@compost)
@@ -41,5 +42,10 @@ class CompostsController < ApplicationController
 
   def compost_params
     params.require(:compost).permit(:address, :description)
+  end
+
+  def find_compost
+    @compost = Compost.find(params[:id])
+    authorize @compost
   end
 end
