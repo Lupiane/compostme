@@ -1,10 +1,10 @@
 class CompostsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_compost, only: [:edit, :update, :show]
+  before_action :find_compost, only: [:edit, :update, :show, :remove]
 
   def index
-    @composts = policy_scope(Compost).all
+    @composts = policy_scope(Compost).where.not(deleted: true)
   end
 
   def show
@@ -36,6 +36,11 @@ class CompostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def remove
+    @compost.update(deleted: true)
+    redirect_to composts_path
   end
 
   private
