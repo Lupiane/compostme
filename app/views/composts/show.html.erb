@@ -1,8 +1,8 @@
 <h2><%= @compost.address %> </h2>
 <h3><%= @compost.description %></h3>
 <% if policy(@compost).edit? %>
-  <%= link_to "Update", edit_compost_path(@compost) %>
+  <%= link_to "Modifier", edit_compost_path(@compost) %>
 <% end %>
 <% if policy(@compost).remove? %>
-  <%= link_to "Remove", remove_compost_path(@compost) %>
+  <%= link_to "Supprimer", remove_compost_path(@compost) %>
 <% end %>
