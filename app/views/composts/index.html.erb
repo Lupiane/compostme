@@ -2,6 +2,9 @@
 <ul>
   <% @composts.each do |compost| %>
     <li> <%= compost.address %> - <%= compost.description %> </li>
+    <% if policy(compost).edit? %>
+      <li><%= link_to "Update", edit_compost_path(compost) %></li>
+    <% end %>
   <% end %>
 </ul>
 <h3><%= link_to 'ajouter un compost', new_compost_path %></h3>

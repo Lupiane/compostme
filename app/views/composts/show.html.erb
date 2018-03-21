@@ -1,2 +1,5 @@
 <h2><%= @compost.address %> </h2>
 <h3><%= @compost.description %></h3>
+<% if policy(@compost).edit? %>
+  <%= link_to "Update", edit_compost_path(@compost) %>
+<% end %>
