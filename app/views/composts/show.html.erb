@@ -3,3 +3,6 @@
 <% if policy(@compost).edit? %>
   <%= link_to "Update", edit_compost_path(@compost) %>
 <% end %>
+<% if policy(@compost).remove? %>
+  <%= link_to "Remove", remove_compost_path(@compost) %>
+<% end %>

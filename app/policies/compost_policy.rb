@@ -17,4 +17,7 @@ class CompostPolicy < ApplicationPolicy
     user == record.user
   end
 
+  def remove?
+    user == record.user
+  end
 end
