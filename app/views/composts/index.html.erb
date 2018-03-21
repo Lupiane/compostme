@@ -1,9 +1,27 @@
-<h2> Les composts à votre disposition </h2>
-<ul>
-  <% @composts.each do |compost| %>
-    <li> <%= link_to compost_path(compost) do %>
-      <%= compost.address %> - <%= compost.description %>
-      <% end %></li>
-  <% end %>
-</ul>
-<h3><%= link_to 'ajouter un compost', new_compost_path %></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+      <div>
+        <h2> Les composts à votre disposition </h2>
+        <ul>
+          <% @composts.each do |compost| %>
+            <li> <%= link_to compost_path(compost) do %>
+              <%= compost.address %> - <%= compost.description %>
+              <% end %></li>
+          <% end %>
+        </ul>
+        <h3><%= link_to 'ajouter un compost', new_compost_path %></h3>
+      </div>
+    </div>
+    <div class="col xs-12 col-sm-5">
+      <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  </div>
+</div>
+
+
