@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: "composts#dashboard"
   get 'my_composts', to: 'composts#user_composts'
 
-  resources :composts, except: [:destroy] do
+  resources :composts do
     member do
       get 'remove', to: 'composts#remove'
     end
