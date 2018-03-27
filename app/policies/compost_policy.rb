@@ -22,6 +22,6 @@ class CompostPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    user.admin == true
+    user.admin?
   end
 end
