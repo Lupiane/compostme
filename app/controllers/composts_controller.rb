@@ -4,7 +4,7 @@ class CompostsController < ApplicationController
   before_action :find_compost, only: [:edit, :update, :show, :remove]
 
   def index
-    @composts = policy_scope(Compost).where.not(deleted: true)
+    @composts = Compost.where.not(deleted: true)
     @map_composts = @composts.where.not(latitude: nil, longitude: nil)
 
     @markers = @map_composts.map do |compost|
@@ -41,7 +41,7 @@ class CompostsController < ApplicationController
   def update
     @compost.update(compost_params)
     if @compost.save
-      redirect_to compost_path(@compost)
+      redirect_to my_composts_path
     else
       render :edit
     end
@@ -49,12 +49,16 @@ class CompostsController < ApplicationController
 
   def remove
     @compost.update(deleted: true)
-    redirect_to composts_path
+    redirect_to my_composts_path
   end
 
   def dashboard
     authorize Compost
     @composts = Compost.all
+  end
+
+  def user_composts
+    @composts = policy_scope(Compost).where(deleted: false).order(id: :desc)
   end
 
   private

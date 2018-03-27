@@ -1,0 +1,53 @@
+<h1>Mes Composts</h1>
+<% unless @composts.empty? %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Point de rdv</th>
+        <th scope="col">Description</th>
+        <th scope="col">Modifier?</th>
+        <th scope="col">Supprimer?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @composts.each do |compost| %>
+        <tr>
+          <td><%= compost.address %></td>
+          <td><%= compost.description %></td>
+          <td><%= link_to "#", "data-toggle": 'modal', "data-target": "#updateCompost#{compost.id}" do %>
+                <%= icon('fas', 'pencil-alt') %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to remove_compost_path(compost) do %>
+              <%= icon('fas', 'trash') %>
+            <% end %>
+          </td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% @composts.each do |compost| %>
+<!-- Modal -->
+        <div class="modal fade" id="updateCompost<%=compost.id%>" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateLabel">Modifier les informations du compost</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', compost: compost %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <% end %>
