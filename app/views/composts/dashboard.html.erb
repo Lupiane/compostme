@@ -1,25 +1,59 @@
 <h2>Admin dashboard</h2>
 
+<h4>Ajouter un compost</h4>
+<table class="table table-bordered">
+  <tbody>
+    <thead>
+    <tr>
+      <th scope="col">Adresse</th>
+      <th scope="col">Description</th>
+      <th scope="col">Public?</th>
+      <th scope="col">Utilisateur</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+    <tr>
+      <%= simple_form_for @compost do |f| %>
+        <td><%= f.input :address, label: false, placeholder: "Adresse du compost (public) ou point de rendez-vous (particulier)"  %></td>
+          <td><%= f.input :description, label: false %></td>
+          <td><%= f.input :public, input_html: { checked: true }, label: false %></td>
+          <td><%= f.association :user, label_method: :id, value_method: :id, include_blank: false, label: false %></td>
+          <td><%= f.submit "Créer" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<h4>Modifier un compost</h4>
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Compost ID</th>
-      <th scope="col">Address</th>
+      <th scope="col">ID Compost</th>
+      <th scope="col">Adresse</th>
       <th scope="col">Description</th>
       <th scope="col">Public?</th>
-      <th scope="col">Deleted?</th>
-      <th scope="col">User ID</th>
+      <th scope="col">Supprimé?</th>
+      <th scope="col">Utilisateur</th>
+      <th scope="col">Modifier?</th>
+      <th scope="col">Supprimer?</th>
     </tr>
   </thead>
   <tbody>
     <% @composts.each do |compost| %>
       <tr>
-        <th scope="row"><%= compost.id %></th>
-        <td><%= compost.address %></td>
-        <td><%= compost.description %></td>
-        <td><%= compost.public %></td>
-        <td><%= compost.deleted %></td>
-        <td><%= compost.user.id %></td>
+        <%= simple_form_for compost do |f| %>
+          <th scope="row"><%= compost.id %></th>
+          <td><%= f.input :address, label: false%></td>
+          <td><%= f.input :description, label: false %></td>
+          <td><%= f.input :public, label: false %></td>
+          <td><%= f.input :deleted, label: false %></td>
+          <td><%= f.association :user, label_method: :id, value_method: :id, include_blank: false, label: false %></td>
+          <td><%= f.submit "OK" %></td>
+          <% end %>
+          <td>
+            <%= link_to compost_path(compost), method: :delete do %>
+              <%= icon('fas', 'trash') %>
+            <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
