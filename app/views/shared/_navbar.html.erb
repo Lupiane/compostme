@@ -14,8 +14,8 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/lupiane", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to my_composts_path do %>
+                <i class="fa fa-user"></i> <%= t(".my_composts", default: "Mes Composts") %>
               <% end %>
             </li>
             <% if current_user.admin == true %>

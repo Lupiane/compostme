@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: "composts#dashboard"
-  resources :composts, only: [:index, :show, :new, :create, :edit, :update] do
+  get 'my_composts', to: 'composts#user_composts'
+
+  resources :composts, except: [:destroy] do
     member do
       get 'remove', to: 'composts#remove'
     end
