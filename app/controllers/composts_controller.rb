@@ -53,7 +53,7 @@ class CompostsController < ApplicationController
   end
 
   def dashboard
-    @composts = policy_scope(Compost).all
+    @composts = policy_scope(Compost).all.order(id: :desc)
   end
 
   private

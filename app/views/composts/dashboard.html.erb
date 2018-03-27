@@ -1,1 +1,32 @@
 <h2>Admin dashboard</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Compost ID</th>
+      <th scope="col">Address</th>
+      <th scope="col">Description</th>
+      <th scope="col">Public?</th>
+      <th scope="col">Deleted?</th>
+      <th scope="col">User ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @composts.each do |compost| %>
+      <tr>
+        <th scope="row"><%= compost.id %></th>
+        <td><%= compost.address %></td>
+        <td><%= compost.description %></td>
+        <td><%= compost.public %></td>
+        <td><%= compost.deleted %></td>
+        <td><%= compost.user.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
