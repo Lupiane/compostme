@@ -28,4 +28,8 @@ class CompostPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def user_composts?
+    true
+  end
 end
