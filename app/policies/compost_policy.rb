@@ -20,4 +20,8 @@ class CompostPolicy < ApplicationPolicy
   def remove?
     user == record.user
   end
+
+  def dashboard?
+    user.admin == true
+  end
 end

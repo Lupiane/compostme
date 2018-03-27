@@ -52,6 +52,10 @@ class CompostsController < ApplicationController
     redirect_to composts_path
   end
 
+  def dashboard
+    @composts = Compost.all
+  end
+
   private
 
   def compost_params
