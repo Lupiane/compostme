@@ -1,5 +1,29 @@
 <h2>Admin dashboard</h2>
 
+<h4>Ajouter un compost</h4>
+<table class="table table-bordered">
+  <tbody>
+    <thead>
+    <tr>
+      <th scope="col">Adresse</th>
+      <th scope="col">Description</th>
+      <th scope="col">Public?</th>
+      <th scope="col">Utilisateur</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+    <tr>
+      <%= simple_form_for @compost do |f| %>
+        <td><%= f.input :address, label: false, placeholder: "Adresse du compost (public) ou point de rendez-vous (particulier)"  %></td>
+          <td><%= f.input :description, label: false %></td>
+          <td><%= f.input :public, input_html: { checked: true }, label: false %></td>
+          <td><%= f.association :user, label_method: :id, value_method: :id, include_blank: false, label: false %></td>
+          <td><%= f.submit "Créer" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<h4>Modifier un compost</h4>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -18,7 +42,7 @@
       <tr>
         <%= simple_form_for compost do |f| %>
           <th scope="row"><%= compost.id %></th>
-          <td><%= f.input :address, label: false %></td>
+          <td><%= f.input :address, label: false%></td>
           <td><%= f.input :description, label: false %></td>
           <td><%= f.input :public, label: false %></td>
           <td><%= f.input :deleted, label: false %></td>

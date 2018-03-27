@@ -29,7 +29,11 @@ class CompostsController < ApplicationController
     authorize @compost
     @compost.user = current_user
     if @compost.save
-      redirect_to compost_path(@compost)
+      if current_user.admin?
+        redirect_to dashboard_path
+      else
+        redirect_to compost_path(@compost)
+      end
     else
       render :new
     end
@@ -59,6 +63,7 @@ class CompostsController < ApplicationController
   def dashboard
     authorize Compost
     @composts = Compost.all.order(id: :desc)
+    @compost = Compost.new
   end
 
   def user_composts
