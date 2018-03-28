@@ -4,7 +4,13 @@ class CompostsController < ApplicationController
   before_action :find_compost, only: [:edit, :update, :show, :remove, :destroy]
 
   def index
-    @composts = Compost.where.not(deleted: true)
+    if params[:query].present?
+      sql_query = "address ILIKE :query OR description ILIKE :query"
+      @composts = Compost.where.not(deleted: true).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @composts = Compost.where.not(deleted: true)
+    end
+
     @map_composts = @composts.where.not(latitude: nil, longitude: nil)
 
     @markers = @map_composts.map do |compost|

@@ -3,6 +3,14 @@
     <div class="col-xs-12 col-sm-7">
       <div>
         <h2> Les composts à votre disposition </h2>
+
+        <%= form_tag composts_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Rechercher un compost"
+          %>
+        <% end %>
         <ul>
           <% @composts.each do |compost| %>
             <li> <%= link_to compost_path(compost) do %>
