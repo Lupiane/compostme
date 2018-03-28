@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :composts
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   mount_uploader :photo, PhotoUploader
 end
