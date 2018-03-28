@@ -14,7 +14,7 @@
         <ul>
           <% @composts.each do |compost| %>
             <li> <%= link_to compost_path(compost) do %>
-              <%= compost.address %> - <%= compost.description %>
+              <%= compost.address %> - <%= compost.public ? "Public" : "Particulier" %>
               <% end %></li>
           <% end %>
         </ul>
