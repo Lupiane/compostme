@@ -1,3 +1,6 @@
 <h2><%= @compost.address %> </h2>
 <h3><%= @compost.description %></h3>
+<% unless @compost.public %>
+  <%= link_to "Entrer en contact avec le propriétaire", "#" %>
+<% end %>
 <%= link_to "Retour à la liste", composts_path %>
