@@ -32,7 +32,7 @@ class CompostsController < ApplicationController
       if current_user.admin?
         redirect_to dashboard_path
       else
-        redirect_to compost_path(@compost)
+        redirect_to my_composts_path
       end
     else
       render :new
@@ -68,6 +68,8 @@ class CompostsController < ApplicationController
 
   def user_composts
     @composts = policy_scope(Compost).where(deleted: false).order(id: :desc)
+    @compost = Compost.new
+    authorize @compost
   end
 
   def destroy
