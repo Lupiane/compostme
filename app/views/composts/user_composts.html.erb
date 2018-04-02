@@ -40,6 +40,42 @@
 
 <%= link_to "Ajouter un compost", "#", "data-toggle": 'modal', "data-target": "#newCompost"%>
 
+<% unless @conversations.empty? %>
+  <h4>Mes Conversations</h4>
+  <h5>Conversations sur mes composts</h5>
+  <% if @compost_conversations.empty? %>
+    <p><i>Aucune conversation</i></p>
+  <% else %>
+    <ul>
+      <% @compost_conversations.each do |c| %>
+        <li> <%= c.compost.address %> /
+          <%= c.user == current_user ? c.compost.user.username : c.user.username %>
+          <%= link_to conversation_messages_path(c) do %>
+            <%= icon('far', 'comments') %>
+          <% end %>
+
+          </li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
+  <h5>Autres conversations</h5>
+  <% if @user_conversations.empty? %>
+    <p><i>Aucune conversation</i></p>
+  <% else %>
+    <ul>
+      <% @user_conversations.each do |c| %>
+        <li> <%= c.compost.address %> /
+          <%= c.user == current_user ? c.compost.user.username : c.user.username %>
+          <%= link_to conversation_messages_path(c) do %>
+            <%= icon('far', 'comments') %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
 <!-- <h4>Ajouter un Compost</h4>
 <table class="table table-bordered">
   <thead>
