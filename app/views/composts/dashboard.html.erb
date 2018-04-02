@@ -40,7 +40,7 @@
       <tr>
         <%= simple_form_for compost do |f| %>
           <th scope="row"><%= compost.id %></th>
-          <td><%= f.input :address, label: false%></td>
+          <td><%= f.input :address, label: false, input_html: { class: "data-address" } %></td>
           <td><%= f.input :description, label: false %></td>
           <td><%= f.input :public, label: false %></td>
           <td><%= f.input :deleted, label: false %></td>
