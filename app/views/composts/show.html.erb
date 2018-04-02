@@ -1,6 +1,25 @@
 <h2><%= @compost.address %> </h2>
 <h3><%= @compost.description %></h3>
-<% unless @compost.public %>
+<% unless @compost.public || @compost.user == current_user%>
   <%= link_to "Entrer en contact avec le propriétaire", "#" %>
+   <%= simple_form_for [@compost, @message] do |f| %>
+    <%= f.input :content, label: false %>
+    <%= f.submit :Envoyer%>
+   <% end %>
 <% end %>
 <%= link_to "Retour à la liste", composts_path %>
+
+<!-- <div>
+  <%# unless @compost.public %>
+    <h4>Ecrire un nouveau message:</h4>
+    <%# if @messages %>
+      <ul>
+        <%# @messages.each do |message| %>
+          <li>le <%#= @message.created_at %>, <%#= @message.user.username %> a écrit: </li>
+          <li><%#= @message.content %></li>
+          <br>
+        <%# end %>
+      </ul>
+    <%# end %>
+  <%# end %>
+</div> -->

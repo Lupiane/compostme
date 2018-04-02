@@ -23,6 +23,7 @@ class CompostsController < ApplicationController
   end
 
   def show
+    @message = Message.new
   end
 
   def new
@@ -76,6 +77,9 @@ class CompostsController < ApplicationController
     @composts = policy_scope(Compost).where(deleted: false).order(id: :desc)
     @compost = Compost.new
     authorize @compost
+    @compost_conversations = Conversation.where(compost: current_user.composts)
+    @user_conversations = Conversation.where(user: current_user)
+    @conversations = @compost_conversations + @user_conversations
   end
 
   def destroy
