@@ -19,16 +19,16 @@ class CompostsController < ApplicationController
       {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/0CF574/"#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        icon: "http://www.googlemapsmarkers.com/v1/0CF574/",
+        infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end
     @public_markers = public_composts.map do |compost|
        {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/2F97C1/"#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        icon: "http://www.googlemapsmarkers.com/v1/2F97C1/",
+        infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end
   end
