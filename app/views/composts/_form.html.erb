@@ -1,5 +1,5 @@
 <%= simple_form_for(compost) do |f| %>
-  <%= f.input :address %>
+  <%= f.input :address, input_html: { class: "compost_address" } %>
   <%= f.input :description %>
   <%= f.button :submit %>
 <% end %>
