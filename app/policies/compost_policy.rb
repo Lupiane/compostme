@@ -14,7 +14,7 @@ class CompostPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    user == record.user || user.admin
   end
 
   def remove?
