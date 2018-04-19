@@ -13,7 +13,7 @@
   </thead>
     <tr>
       <%= simple_form_for @compost do |f| %>
-        <td><%= f.input :address, label: false, placeholder: "Adresse du compost (public) ou point de rendez-vous (particulier)"  %></td>
+        <td><%= f.input :address, label: false, input_html: { class: "compost_address" }, placeholder: "Adresse du compost (public) ou point de rendez-vous (particulier)"  %></td>
           <td><%= f.input :description, label: false %></td>
           <td><%= f.input :public, input_html: { checked: true }, label: false %></td>
           <td><%= f.submit "Créer" %></td>
@@ -40,7 +40,7 @@
       <tr>
         <%= simple_form_for compost do |f| %>
           <th scope="row"><%= compost.id %></th>
-          <td><%= f.input :address, label: false%></td>
+          <td><%= f.input :address, label: false, input_html: { class: "compost_address" } %></td>
           <td><%= f.input :description, label: false %></td>
           <td><%= f.input :public, label: false %></td>
           <td><%= f.input :deleted, label: false %></td>
