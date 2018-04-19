@@ -14,11 +14,7 @@ function autocomplete() {
       });
     });
   });
-
-
-
-// IN PROGRESS: make JS work for form loading inside modals
-//  .....
 }
 
 export { autocomplete };
+
