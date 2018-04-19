@@ -12,6 +12,7 @@ gem 'pundit'
 gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'rails_emoji_picker'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
