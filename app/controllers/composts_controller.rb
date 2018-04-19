@@ -11,12 +11,23 @@ class CompostsController < ApplicationController
       @composts = Compost.where.not(deleted: true)
     end
 
-    @map_composts = @composts.where.not(latitude: nil, longitude: nil)
+    map_composts = @composts.where.not(latitude: nil, longitude: nil)
+    public_composts = map_composts.where(public: true)
+    private_composts = map_composts.where(public: false)
 
-    @markers = @map_composts.map do |compost|
+    @markers = private_composts.map do |compost|
       {
         lat: compost.latitude,
-        lng: compost.longitude#,
+        lng: compost.longitude,
+        icon: "http://www.googlemapsmarkers.com/v1/0CF574/"#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
+    @public_markers = public_composts.map do |compost|
+       {
+        lat: compost.latitude,
+        lng: compost.longitude,
+        icon: "http://www.googlemapsmarkers.com/v1/2F97C1/"#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
