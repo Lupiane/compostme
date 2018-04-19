@@ -1819,6 +1819,16 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emoji-datasource@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/emoji-datasource/-/emoji-datasource-4.0.0.tgz#3fc9c0c2f4fb321d9291138819f6d100603d3e2f"
+
+emoji-js@^3.2.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/emoji-js/-/emoji-js-3.4.0.tgz#dabdeda60c92d1948a5177e51ba9421d2029b052"
+  dependencies:
+    emoji-datasource "4.0.0"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -5000,6 +5010,17 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^2.0.0"
     inherits "^2.0.1"
+
+rm-emoji-picker@^0.3.31:
+  version "0.3.31"
+  resolved "https://registry.yarnpkg.com/rm-emoji-picker/-/rm-emoji-picker-0.3.31.tgz#925e5c951c37736b47c4616c450470252beb97ac"
+  dependencies:
+    emoji-js "^3.2.0"
+    rm-tooltip "^1.0.5"
+
+rm-tooltip@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/rm-tooltip/-/rm-tooltip-1.0.6.tgz#49d8ad5ed431e70b43f5008a7ca6c4f66d15b963"
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"

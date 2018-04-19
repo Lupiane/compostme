@@ -15,7 +15,9 @@
     <div class="col-sm-6">
       <h4>Ecrire un nouveau message</h4>
       <%= simple_form_for [@compost, @message] do |f| %>
-        <%= f.input :content, label: false %>
+      <div class="emoji-picker-container">
+        <%= f.input :content, label: false, data: { emojiable: true } %>
+      </div>
         <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id} %>
         <%= f.submit :Envoyer%>
       <% end %>
