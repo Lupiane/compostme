@@ -64,8 +64,10 @@ class CompostsController < ApplicationController
     @compost.update(compost_params)
     if @compost.save
       if current_user.admin?
+        flash[:notice] = "Compost mis à jour."
         redirect_to dashboard_path
       else
+        flash[:notice] = "Compost mis à jour."
         redirect_to my_composts_path
       end
     else
@@ -75,6 +77,7 @@ class CompostsController < ApplicationController
 
   def remove
     @compost.update(deleted: true)
+    flash[:notice] = "Compost supprimé!"
     redirect_to my_composts_path
   end
 
@@ -95,6 +98,7 @@ class CompostsController < ApplicationController
 
   def destroy
     @compost.delete
+    flash[:alert] = "Compost définitivement supprimé!"
     redirect_to dashboard_path
   end
 
