@@ -1,4 +1,7 @@
 // Specific CSS for your home-page
+p {
+  font-weight: lighter;
+}
 .page-container {
   padding: O;
   margin: 0;
@@ -25,4 +28,11 @@
   border: 1px solid black;
   height: 100%;
 }
+
+// font testing
+.compact {
+  letter-spacing: -4px;
+  // text-decoration: underline;
+}
+
 
