@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+.page-container {
+  padding: O;
+  margin: 0;
+  min-height: calc(100vh - 70px - 50px)
+}
+
+.cta-container {
+  height: 50vh;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.content-row {
+  height: 50vh;
+}
+
+
+.content-item {
+  border: 1px solid black;
+  height: 100%;
+}
+
+.content-photo {
+  border: 1px solid black;
+  height: 100%;
+}
