@@ -1,6 +1,17 @@
 .footer {
   height: 50px;
-  // background-color: #011F3F;
   background-color: $green;
+  color: rgb(220, 220, 220);
+  font-weight: 200;
+  text-align: center;
+  padding-top: 10px;
+  a {
+    color: rgb(220, 220, 220);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
 }
 
