@@ -13,10 +13,11 @@
   }
 }
 
+
 /* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
-}
+// .navbar-wagon-brand img {
+//   height: 50px;
+// }
 
 /* User Avatar */
 .navbar-wagon .avatar {
@@ -25,11 +26,22 @@
   border-radius: 50%;
 }
 
+.navbar-wagon-center {
+  // border: 2px solid red;
+}
+
+.navbar-wagon-left {
+  // border: 2px solid red;
+  width: 30%;
+}
 /* Right section */
 .navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  text-align: right;
+  // border: 2px solid red;
+  width: 30%;
 }
 
 /* Basic navbar item */

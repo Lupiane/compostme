@@ -1,8 +1,11 @@
 // Specific CSS for your home-page
+p {
+  font-weight: lighter;
+}
 .page-container {
   padding: O;
   margin: 0;
-  min-height: calc(100vh - 70px - 50px)
+  min-height: calc(100vh - 70px - 50px);
 }
 
 .cta-container {
@@ -26,5 +29,10 @@
   height: 100%;
 }
 
+// font testing
+.compact {
+  letter-spacing: -4px;
+  // text-decoration: underline;
+}
 
 
