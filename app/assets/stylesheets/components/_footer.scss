@@ -3,10 +3,10 @@
   background-color: $green;
   color: rgb(220, 220, 220);
   font-weight: 200;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   // text-align: center;
   // padding-top: 10px;
   box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
@@ -17,6 +17,12 @@
   a:hover {
     text-decoration: none;
     color: white;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  i {
+    padding-left: 8px;
   }
 }
 
