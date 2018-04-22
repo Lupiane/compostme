@@ -19,6 +19,8 @@ p, a {
   background-repeat: no-repeat !important;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cta-content {
@@ -30,13 +32,17 @@ p, a {
 // }
 
 .content-item {
-  border: 1px solid black;
+  // border: 1px solid black;
   height: 100%;
+  text-align: justify;
 }
 
 .content-photo {
-  border: 1px solid black;
+  // border: 1px solid black;
   // height: 100%;
+  img {
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 }
 
 // font testing
