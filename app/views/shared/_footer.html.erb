@@ -1,4 +1,26 @@
-<div class="footer">
+<div class="footer hidden-xs">
+  <ul class="list-inline">
+    <li>Contactez-nous: </li>
+    <li><%= link_to "#" do %>
+        <%= icon('fab', 'facebook-f') %>
+      <% end %></li>
+       <li><%= link_to "#" do %>
+        <%= icon('fab', 'instagram') %>
+      <% end %></li>
+       <li><%= link_to "mailto:compostme.app@gmail.com" do %>
+        <%= icon('far', 'envelope') %>
+      <% end %></li>
+  </ul>
+  <ul class="list-inline">
+    <li>Made by Pauline Gaget
+      <%= link_to "https://github.com/Lupiane" do %>
+        <%= icon('fab', 'github') %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="footer-xs hidden-sm hidden-md hidden-lg">
   <ul class="list-inline">
     <li>Contactez-nous: </li>
     <li><%= link_to "#" do %>
