@@ -1,10 +1,14 @@
 .footer {
-  height: 50px;
+  height: 70px;
   background-color: $green;
   color: rgb(220, 220, 220);
   font-weight: 200;
-  text-align: center;
-  padding-top: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // text-align: center;
+  // padding-top: 10px;
   a {
     color: rgb(220, 220, 220);
     text-decoration: none;
