@@ -17,13 +17,22 @@
               <% end %>
           </div>
         </div>
-      <div class="row">
+      <div class="row card-container">
         <% @composts.each do |compost| %>
           <div class="col-xs-12 col-sm-6 col-md-4 no-col-padding">
             <div class="compost-card text-center">
               <%= link_to compost_path(compost) do %>
-                <p class="bold-green"><%= compost.public ? icon('fas', 'map-signs') : icon('fas', 'home') %></p>
-                <p class="bold-green"><%= compost.public ?  "Compost public" : compost.user.username.capitalize%></p>
+                <% if compost.public %>
+                  <p class="bold-orange">
+                    <%= icon('fas', 'map-signs')  %><br>
+                    Compost public
+                  </p>
+                <% else %>
+                  <p class="bold-green">
+                    <%= icon('fas', 'home')  %><br>
+                    <%= compost.user.username.capitalize %>
+                  </p>
+                <% end %>
                 <p class="grey"><%= compost.address %></p>
               <% end %>
             </div>
@@ -38,7 +47,7 @@
       <div
         id="map"
         style="width: 100%;
-        height: 600px;"
+        height: 100vh;"
         data-pubmrkrs="<%= @public_markers.to_json %>"
         data-markers="<%= @markers.to_json %>"
       ></div>

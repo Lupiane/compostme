@@ -19,7 +19,7 @@ class CompostsController < ApplicationController
       {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/0CF574/",
+        icon: "http://www.googlemapsmarkers.com/v1/44B59E/",
         infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end
@@ -27,7 +27,7 @@ class CompostsController < ApplicationController
        {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/2F97C1/",
+        icon: "http://www.googlemapsmarkers.com/v1/E67E22/",
         infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end

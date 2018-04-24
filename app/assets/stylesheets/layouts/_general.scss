@@ -11,11 +11,19 @@
   justify-content: space-between;
   i {
     font-size: 32px;
+    color: $green;
   }
   form {
     width: 80%;
+    font-weight: lighter;
   }
   p {
     padding-top: 10px;
+  }
+}
+
+#content {
+  a:hover {
+    text-decoration: none;
   }
 }
