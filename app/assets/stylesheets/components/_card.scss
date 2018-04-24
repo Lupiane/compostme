@@ -15,14 +15,18 @@
     text-decoration: none;
   }
 }
-.bold-green {
-  color: $green;
+.bold {
   font-weight: bold;
 }
 
-.bold-orange {
+.green {
+  color: $green;
+  font-family: "Gabriela";
+}
+
+.orange {
   color: $orange;
-  font-weight: bold;
+  font-family: "Gabriela";
 }
 
 .grey {

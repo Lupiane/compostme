@@ -23,12 +23,12 @@
             <div class="compost-card text-center">
               <%= link_to compost_path(compost) do %>
                 <% if compost.public %>
-                  <p class="bold-orange">
+                  <p class="bold orange">
                     <%= icon('fas', 'map-signs')  %><br>
                     Compost public
                   </p>
                 <% else %>
-                  <p class="bold-green">
+                  <p class="bold green">
                     <%= icon('fas', 'home')  %><br>
                     <%= compost.user.username.capitalize %>
                   </p>
