@@ -1,0 +1,21 @@
+.no-margin-container {
+  margin-right: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.index-head {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    font-size: 32px;
+  }
+  form {
+    width: 80%;
+  }
+  p {
+    padding-top: 10px;
+  }
+}

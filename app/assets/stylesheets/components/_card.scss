@@ -1,0 +1,25 @@
+.compost-card {
+  background-color: white;
+  padding: 20px;
+  margin:10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  height: 170px;
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.bold-green {
+    color: $green;
+    font-weight: bold;
+}
+
+.grey {
+  color: $gray;
+}
+
+.no-col-padding {
+  padding: 0;
+}
