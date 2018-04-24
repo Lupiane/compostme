@@ -1,19 +1,41 @@
-<div class="footer">
+<div class="footer hidden-xs">
   <ul class="list-inline">
     <li>Contactez-nous: </li>
-    <li><%= link_to "#" do %>
+    <li><%= link_to "#", target: "_blank" do %>
         <%= icon('fab', 'facebook-f') %>
       <% end %></li>
-       <li><%= link_to "#" do %>
+       <li><%= link_to "https://www.instagram.com/compostme.app/", target: "_blank" do %>
         <%= icon('fab', 'instagram') %>
       <% end %></li>
-       <li><%= link_to "mailto:compostme.app@gmail.com" do %>
+       <li><%= link_to "mailto:compostme.app@gmail.com", target: "_blank" do %>
         <%= icon('far', 'envelope') %>
       <% end %></li>
   </ul>
   <ul class="list-inline">
     <li>Made by Pauline Gaget
-      <%= link_to "https://github.com/Lupiane" do %>
+      <%= link_to "https://github.com/Lupiane", target: "_blank" do %>
+        <%= icon('fab', 'github') %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="footer-xs hidden-sm hidden-md hidden-lg">
+  <ul class="list-inline">
+    <li>Contactez-nous: </li>
+    <li><%= link_to "#", target: "_blank" do %>
+        <%= icon('fab', 'facebook-f') %>
+      <% end %></li>
+       <li><%= link_to "https://www.instagram.com/compostme.app/", target: "_blank" do %>
+        <%= icon('fab', 'instagram') %>
+      <% end %></li>
+       <li><%= link_to "mailto:compostme.app@gmail.com", target: "_blank" do %>
+        <%= icon('far', 'envelope') %>
+      <% end %></li>
+  </ul>
+  <ul class="list-inline">
+    <li>Made by Pauline Gaget
+      <%= link_to "https://github.com/Lupiane", target: "_blank" do %>
         <%= icon('fab', 'github') %>
       <% end %>
     </li>
