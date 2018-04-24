@@ -1,31 +1,53 @@
-<div class="container">
+<div class="container no-margin-container">
   <div class="row">
     <div class="col-xs-12 col-sm-7">
-      <div>
-        <h2> Les composts à votre disposition </h2>
-
-        <%= form_tag composts_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Rechercher un compost"
-          %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="index-head">
+            <%= form_tag composts_path, method: :get do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Rechercher un compost (addresse, mot-clef)"
+              %>
+            <% end %>
+            <p>ou en ajouter un</p>
+            <%= link_to new_compost_path do%>
+                <%= icon('far', 'plus-square') %>
+              <% end %>
+          </div>
+        </div>
+      <div class="row card-container">
+        <% @composts.each do |compost| %>
+          <div class="col-xs-12 col-sm-6 col-md-4 no-col-padding">
+            <div class="compost-card text-center">
+              <%= link_to compost_path(compost) do %>
+                <% if compost.public %>
+                  <p class="bold-orange">
+                    <%= icon('fas', 'map-signs')  %><br>
+                    Compost public
+                  </p>
+                <% else %>
+                  <p class="bold-green">
+                    <%= icon('fas', 'home')  %><br>
+                    <%= compost.user.username.capitalize %>
+                  </p>
+                <% end %>
+                <p class="grey"><%= compost.address %></p>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-        <ul>
-          <% @composts.each do |compost| %>
-            <li> <%= link_to compost_path(compost) do %>
-              <%= compost.address %> - <%= compost.public ? "Public" : "Particulier" %>
-              <% end %></li>
-          <% end %>
-        </ul>
-        <h3><%= link_to 'ajouter votre compost', new_compost_path %></h3>
+      </div>
+        <h3></h3>
       </div>
     </div>
+
     <div class="col xs-12 col-sm-5">
       <div
         id="map"
         style="width: 100%;
-        height: 600px;"
+        height: 100vh;"
         data-pubmrkrs="<%= @public_markers.to_json %>"
         data-markers="<%= @markers.to_json %>"
       ></div>
