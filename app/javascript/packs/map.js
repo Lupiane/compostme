@@ -242,10 +242,13 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   map.addMarkers(markers);
   const pubmrkrs = JSON.parse(mapElement.dataset.pubmrkrs);
   map.addMarkers(pubmrkrs);
-  if (markers.length === 0) {
+  if (markers.length === 0) && (pubmrkrs.length === 0) {
     map.setZoom(2);
-  } else if (markers.length === 1) {
+  } else if (markers.length === 1) && (pubmrkrs.length === 0) {
     map.setCenter(markers[0].lat, markers[0].lng);
+    map.setZoom(14);
+  } else if (pubmrkrs.length === 1) && (markers.length === 0) {
+    map.setCenter(pubmrkrs[0].lat, pubmrkrs[0].lng);
     map.setZoom(14);
   } else {
     map.fitLatLngBounds(markers);
