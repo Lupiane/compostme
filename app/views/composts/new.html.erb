@@ -1,3 +1,29 @@
-<h2>Ajouter un compost</h2>
-
-<%= render "form", compost: @compost %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-push-6">
+      <div class="warning-container">
+        <h4><%= icon('fab', 'earlybirds') %> Point vigilance internet!</h4>
+        <p class="text-justify">
+          Nous savons que la communauté <strong> CompostMe </strong> est composée de gens formidables!
+        </p>
+        <p class="text-justify">
+          Toutefois, nous n'en demeurons pas moins un service de mise en relation entre personnes qui ne se connaissent pas.
+        </p>
+        <p class="text-justify"> Par conséquent, essayez dans la mesure du possible d'indiquer <strong>un point de rendez-vous qui n'est pas l'adresse de votre domicile </strong> (pourquoi pas le coin de votre rue, la gare où vous passez tous les matins, le square où vous emmenez vos enfants tous les jours?)
+        </p>
+        <p class="text-justify">
+          Cela vous permettra ensuite de dire en toute tranquillité: <i>"Non, je ne peux pas récupérer tes biodéchets ce weekend, je fais le pont à l'autre bout de la France..."</i>
+        </p>
+        <div class="text-center"><%= icon('far', 'smile') %></div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+      <div class="form-container">
+        <div class="form-heading text-center">
+          <h3>Collectez pour votre compost</h3>
+        </div>
+        <%= render "form", compost: @compost %>
+      </div>
+    </div>
+  </div>
+</div>
