@@ -1,21 +1,30 @@
 .no-margin-container {
   margin-right: 0;
   padding-right: 0;
+  padding-left: 0;
   width: 100%;
 }
 
-.index-head {
-  padding-top: 20px;
+#index-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
   i {
     font-size: 32px;
-    color: $green;
+    color: gray;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   form {
-    width: 70%;
     font-weight: lighter;
+    width: 91%;
   }
   p {
     padding-top: 10px;
@@ -26,4 +35,24 @@
   a:hover {
     text-decoration: none;
   }
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+#search-head {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 58%;
+}
+
+#add-head {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 41%;
 }
