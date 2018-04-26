@@ -32,12 +32,17 @@
 
       <% unless @compost.public || @compost.user == current_user %>
         <div class="col-sm-6">
-          <%= link_to "Entrer en contact avec le propriétaire", "#" %>
+          <div class="form-container">
+            <div class="form-heading text-center">
+              <h3>Contactez <%= @compost.user.username.capitalize %>:</h3>
+            </div>
             <%= simple_form_for [@compost, @message] do |f| %>
-              <%= f.input :content, label: false %>
-              <%= f.submit :Envoyer %>
+              <%= f.input :content, label: false, input_html: { rows: 8 } %>
+              <div class="form-submit text-center">
+                <%= f.submit :Envoyer, class: "btn-rounded btn-success" %>
+              </div>
             <% end %>
-
+          </div>
       </div>
     <% end %>
     </div>
