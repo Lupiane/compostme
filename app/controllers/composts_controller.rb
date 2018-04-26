@@ -35,6 +35,12 @@ class CompostsController < ApplicationController
 
   def show
     @message = Message.new
+    marker_color_code = @compost.public ? "E67E22" : "44B59E"
+    @markers = [{
+      lat: @compost.latitude,
+      lng: @compost.longitude,
+      icon: "http://www.googlemapsmarkers.com/v1/#{marker_color_code}/"
+    }]
   end
 
   def new

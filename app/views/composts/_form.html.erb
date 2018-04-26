@@ -1,8 +1,8 @@
 <%= simple_form_for(compost) do |f| %>
   <%= f.input :address, input_html: { class: "compost_address" }, label: "Adresse", placeholder: "votre point de rendez-vous" %>
-  <%= f.input :description, label: "Description", placeholder: "type de bio-déchets que vous acceptez, modalités de rendez-vous, etc. ", input_html: { rows: 8} %>
+  <%= f.input :description, label: "Description", placeholder: "type de bio-déchets que vous acceptez, modalités de rendez-vous, etc. ", input_html: { rows: 8 } %>
   <div class="form-submit text-center">
-    <%= f.button :submit, "Ajoutez votre compost", class: "btn-rounded btn-success" %>
+    <%= f.button :submit, "Ajouter", class: "btn-rounded btn-success" %>
   </div>
 <% end %>
 
