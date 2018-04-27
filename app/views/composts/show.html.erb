@@ -40,6 +40,7 @@
             </div>
             <%= simple_form_for [@compost, @message] do |f| %>
               <%= f.input :content, label: false, placeholder: "Votre message", input_html: { rows: 8 } %>
+              <%= f.input :from_show, as: :hidden, input_html: { value: true }%>
               <div class="form-submit text-center">
                 <%= f.submit :Envoyer, class: "btn-rounded btn-success" %>
               </div>
