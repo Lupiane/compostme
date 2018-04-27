@@ -13,5 +13,5 @@ class Conversation < ApplicationRecord
   has_many :messages
   validates_with UserValidator
   validates :compost, uniqueness: { scope: :user,
-    message: "A conversation between these users already exists" }
+    message: "A conversation between this user and this compost owner already exists" }
 end
