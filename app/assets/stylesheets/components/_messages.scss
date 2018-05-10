@@ -36,5 +36,9 @@
 .conversation-header {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 0 15px;
+}
+
+#message_content {
+  margin-top: 23px;
 }
