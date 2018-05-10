@@ -1,80 +1,89 @@
-<h3><%= current_user.username %> </h3>
-<p><%= link_to "Modifier mes informations", edit_user_registration_path %></p>
-<div>
-  <% if current_user.photo? %>
-    <%= cl_image_tag current_user.photo, height: 200, width: 200, crop: :fill %>
-  <% end %>
+<div class="profile-head no-margin-container">
+  <div>
+    <% if current_user.photo? %>
+      <%= cl_image_tag current_user.photo, height: 150, width: 150, gravity: :face, radius: "20", crop: :fill, fetch_format: :auto %>
+    <% end %>
+  </div>
+  <h3><%= current_user.username.capitalize %></h3>
+  <p><%= link_to "Modifier mon profil", edit_user_registration_path %></p>
 </div>
-
-<% unless @composts.empty? %>
-  <h4>Mes Composts</h4>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Point de rdv</th>
-        <th scope="col">Description</th>
-        <th scope="col">Modifier?</th>
-        <th scope="col">Supprimer?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @composts.each do |compost| %>
-        <tr>
-          <td><%= compost.address %></td>
-          <td><%= compost.description %></td>
-          <td><%= link_to "#", "data-toggle": 'modal', "data-target": "#updateCompost#{compost.id}" do %>
-                <%= icon('fas', 'pencil-alt') %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to remove_compost_path(compost) do %>
-              <%= icon('fas', 'trash') %>
-            <% end %>
-          </td>
-        </tr>
-
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<%= link_to "Ajouter un compost", "#", "data-toggle": 'modal', "data-target": "#newCompost"%>
-
-<% unless @conversations.empty? %>
-  <h4>Mes Conversations</h4>
-  <h5>Conversations sur mes composts</h5>
-  <% if @compost_conversations.empty? %>
-    <p><i>Aucune conversation</i></p>
-  <% else %>
-    <ul>
-      <% @compost_conversations.each do |c| %>
-        <li> <%= c.compost.address %> /
-          <%= c.user == current_user ? c.compost.user.username : c.user.username %>
-          <%= link_to conversation_messages_path(c) do %>
-            <%= icon('far', 'comments') %>
+<div class="content-container green-bg">
+  <div class="profile-list">
+    <% unless @composts.empty? %>
+      <h4>Mes Composts</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Point de rdv</th>
+            <th scope="col">Description</th>
+            <th scope="col">Modifier?</th>
+            <th scope="col">Supprimer?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @composts.each do |compost| %>
+            <tr>
+              <td><%= compost.address %></td>
+              <td><%= compost.description %></td>
+              <td><%= link_to "#", "data-toggle": 'modal', "data-target": "#updateCompost#{compost.id}" do %>
+                    <%= icon('fas', 'pencil-alt') %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to remove_compost_path(compost) do %>
+                  <%= icon('fas', 'trash') %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <div class="text-center">
+      <%= link_to "Ajouter un compost", "#", "data-toggle": 'modal', "data-target": "#newCompost"%>
+    </div>
+  </div>
 
-          </li>
-      <% end %>
-    </ul>
-    <br>
-  <% end %>
-  <h5>Autres conversations</h5>
-  <% if @user_conversations.empty? %>
-    <p><i>Aucune conversation</i></p>
-  <% else %>
-    <ul>
-      <% @user_conversations.each do |c| %>
-        <li> <%= c.compost.address %> /
-          <%= c.user == current_user ? c.compost.user.username : c.user.username %>
-          <%= link_to conversation_messages_path(c) do %>
-            <%= icon('far', 'comments') %>
+  <div class="profile-list">
+  <% unless @conversations.empty? %>
+    <h4>Mes Conversations</h4>
+    <div class="conv">
+    <div>
+      <h5>Conversations sur mes composts</h5>
+      <% if @compost_conversations.empty? %>
+        <p><i>Aucune conversation</i></p>
+      <% else %>
+        <ul class="fa-ul conv-list">
+          <% @compost_conversations.each do |c| %>
+            <li><%= link_to conversation_messages_path(c) do %>
+                  <%= icon('far', 'comments') %>
+                <% end %>
+              <strong><%= c.user == current_user ? c.compost.user.username.capitalize : c.user.username.capitalize %></strong> - <%= c.compost.address %>
+            </li>
           <% end %>
-        </li>
+        </ul>
+        <br>
       <% end %>
-    </ul>
-  <% end %>
-<% end %>
+    </div>
+      <div>
+        <h5>Autres conversations</h5>
+        <% if @user_conversations.empty? %>
+          <p><i>Aucune conversation</i></p>
+        <% else %>
+          <ul class="fa-ul conv-list">
+            <% @user_conversations.each do |c| %>
+              <li><%= link_to conversation_messages_path(c) do %>
+                    <%= icon('far', 'comments') %>
+                  <% end %>
+                <strong><%= c.user == current_user ? c.compost.user.username.capitalize : c.user.username.capitalize %></strong> - <%= c.compost.address %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 
 <!-- <h4>Ajouter un Compost</h4>
 <table class="table table-bordered">
@@ -97,38 +106,53 @@
 </table> -->
 
 <!-- Update Modal -->
-<% @composts.each do |compost| %>
-  <div class="modal fade" id="updateCompost<%=compost.id%>" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateLabel">Modifier les informations du compost</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <% @composts.each do |compost| %>
+    <div class="modal fade" id="updateCompost<%=compost.id%>" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header flex-content">
+            <h5 class="modal-title" id="updateLabel">Modifier les informations du compost</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render 'form', compost: compost %>
+          </div>
+         <!--  <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div> -->
         </div>
-        <div class="modal-body">
-          <%= render 'form', compost: compost %>
-        </div>
-       <!--  <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div> -->
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 <!-- New Modal -->
  <div class="modal fade" id="newCompost" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header flex-content">
           <h5 class="modal-title" id="updateLabel">Ajouter votre compost</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="modal-warning">
+            <h5><%= icon('fab', 'earlybirds') %> Point vigilance internet!</h5>
+            <p class="text-justify">
+              Nous savons que la communauté <strong> CompostMe </strong> est composée de gens formidables!
+            </p>
+            <p class="text-justify">
+              Toutefois, nous n'en demeurons pas moins un service de mise en relation entre personnes qui ne se connaissent pas.
+            </p>
+            <p class="text-justify"> Par conséquent, essayez dans la mesure du possible d'indiquer <strong>un point de rendez-vous qui n'est pas l'adresse de votre domicile </strong> (pourquoi pas le coin de votre rue, la gare où vous passez tous les matins, le square où vous emmenez vos enfants tous les jours?)
+            </p>
+            <p class="text-justify">
+              Cela vous permettra ensuite de dire en toute tranquillité: <i>"Non, je ne peux pas récupérer tes biodéchets ce weekend, je fais le pont à l'autre bout de la France..."</i>
+            </p>
+            <div class="text-center"><%= icon('far', 'smile') %></div>
+          </div>
           <%= render 'form', compost: @compost %>
         </div>
         <!-- <div class="modal-footer">
@@ -137,3 +161,4 @@
       </div>
     </div>
   </div>
+</div>

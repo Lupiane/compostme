@@ -1,3 +1,14 @@
 .pac-container {
     z-index: 1051 !important;
 }
+.modal-warning {
+  color: $red;
+  font-size: 13px;
+}
+.flex-content {
+  display: flex;
+  justify-content: space-around;
+  h5 {
+    margin-right: auto;
+  }
+}
