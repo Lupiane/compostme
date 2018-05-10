@@ -1,29 +1,37 @@
-<h2>Conversation avec <%= @conversation.user.username %></h2>
-<h4>Compost: <%= @conversation.compost.address %></h4>
+<div class="content-container">
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <ul>
-        <% @messages.each do |message| %>
-          <li><i>Le <%= message.created_at %>, <%= message.user.username %> a écrit:</i></li>
-          <li><%= message.content %></li>
-          <br>
-        <% end %>
-      </ul>
+  <div class="container form-container">
+    <div class="form-heading text-center">
+      <h2>Conversation avec <%= current_user == @compost.user ? @conversation.user.username.capitalize : @compost.user.username.capitalize %></h2>
+      <h4>Compost: <%= @conversation.compost.address %></h4>
     </div>
-    <div class="col-sm-6">
-      <h4>Ecrire un nouveau message</h4>
-      <%= simple_form_for [@compost, @message] do |f| %>
-        <%= f.input :content, label: false %>
-        <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id} %>
-        <%= f.submit :Envoyer%>
-      <% end %>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="conversation-header">
+            <h4> <%= @conversation.user == current_user ? @conversation.compost.user.username.capitalize : @conversation.user.username.capitalize %></h4>
+            <h4>Vous</h4>
+          </div>
+          <% @messages.each do |message| %>
+            <div class="col-xs-12">
+              <div class="message-card-<%= message.user == current_user ? "right" : "left" %>">
+                <div class="message-content <%= message.user == current_user ? "message-right" : "message-left" %>">
+                  <p><i>le <%= message.created_at.strftime("%d/%m/%Y")%> <br>à <%= message.created_at.strftime("%H:%M")%></i></p>
+                  <p><%= message.content.capitalize %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h4>Ecrire un nouveau message</h4>
+        <%= simple_form_for [@compost, @message] do |f| %>
+          <%= f.input :content, label: false %>
+          <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id} %>
+          <%= f.submit :Envoyer%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-<h4><%= link_to "Retour à mon profil", my_composts_path %></h4>
