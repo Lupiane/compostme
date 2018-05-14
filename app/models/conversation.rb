@@ -1,4 +1,3 @@
-
 class UserValidator < ActiveModel::Validator
   def validate(record)
     if record.user == record.compost.user
