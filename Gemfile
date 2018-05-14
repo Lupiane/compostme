@@ -12,6 +12,7 @@ gem 'pundit'
 gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'pretender'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
