@@ -89,6 +89,7 @@ class CompostsController < ApplicationController
 
   def dashboard
     authorize Compost
+    @users = User.all
     if params[:username].present?
       user = User.where(username: params[:username])
       @composts= Compost.where(user: user).order(id: :desc)

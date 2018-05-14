@@ -7,6 +7,13 @@
   <%= link_to root_path, class: "navbar-wagon-center" do %>
     <%= image_tag "logo.png", height: 60 %>
   <% end %>
+
+  <!-- for impersonation -->
+  <% if current_user != true_user %>
+    You (<%= true_user.name %>) are signed in as <%= current_user.name %>
+    <%= link_to "Back to admin", stop_impersonating_users_path, method: :post %>
+  <% end %>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm content-right">
     <% if user_signed_in? %>
