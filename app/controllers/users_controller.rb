@@ -7,13 +7,15 @@ class UsersController < ApplicationController
 
   def impersonate
     user = User.find(params[:id])
+    authorize user
     impersonate_user(user)
-    redirect_to root_path
+    redirect_to my_composts_path
   end
 
   def stop_impersonating
+    authorize true_user
     stop_impersonating_user
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   private
