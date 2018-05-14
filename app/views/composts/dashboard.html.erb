@@ -1,62 +1,85 @@
-<h2>Admin Dashboard</h2>
+<div class="content-container">
+  <h2>Admin Dashboard</h2>
 
-<h4>Ajouter un compost (public)</h4>
-<table class="table table-bordered">
-  <tbody>
-    <thead>
-    <tr>
-      <th scope="col">Adresse</th>
-      <th scope="col">Description</th>
-      <th scope="col">Public?</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-    <tr>
-      <%= simple_form_for @compost do |f| %>
-        <td><%= f.input :address, label: false, input_html: { class: "compost_address" }, placeholder: "Adresse du compost (public) ou point de rendez-vous (particulier)"  %></td>
-          <td><%= f.input :description, label: false %></td>
-          <td><%= f.input :public, input_html: { checked: true }, label: false %></td>
-          <td><%= f.submit "Créer" %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
-<h4>Modifier un compost</h4>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID Compost</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">Description</th>
-      <th scope="col">Public?</th>
-      <th scope="col">Supprimé?</th>
-      <th scope="col">Utilisateur</th>
-      <th scope="col">Modifier?</th>
-      <th scope="col">Détruire?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @composts.each do |compost| %>
-      <tr>
-        <%= simple_form_for compost do |f| %>
-          <th scope="row"><%= compost.id %></th>
-          <td><%= f.input :address, label: false, input_html: { class: "compost_address" } %></td>
-          <td><%= f.input :description, label: false %></td>
-          <td><%= f.input :public, label: false %></td>
-          <td><%= f.input :deleted, label: false %></td>
-          <td><%= f.association :user, label_method: :id, value_method: :id, include_blank: false, label: false %></td>
-          <td><%= f.submit "OK" %></td>
+  <div class="content-container profile-list">
+    <h4>Passer pour un utilisateur</h4>
+    <p>Coming soon...</p>
+  </div>
+
+  <div class="content-container profile-list">
+    <h4>Ajouter un compost (public)</h4>
+    <table class="table admin-table new-table">
+      <tbody>
+        <thead>
+        <tr>
+          <th scope="col">Adresse</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+        <tr>
+          <%= simple_form_for @compost do |f| %>
+            <td><%= f.input :address, label: false, input_html: { class: "compost_address" }, placeholder: "Adresse du compost"  %></td>
+              <td><%= f.input :description, label: false %>
+              <%= f.input :public, as: :hidden, input_html: { value: true }, label: false %></td>
+              <td><%= f.submit "Créer" %></td>
           <% end %>
-          <td>
-            <%= link_to compost_path(compost), method: :delete do %>
-              <%= icon('fas', 'trash') %>
-            <% end %>
-          </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
+  <div class="content-container profile-list">
+    <h4>Modifier un compost</h4>
+    <div class="search-table-container">
+      <div class="search-table">
+        <p>Filtrer par utilisateur: </p>
+        <%= form_tag dashboard_path, method: :get do %>
+          <%= text_field_tag :username,
+            params[:username],
+            class: "form-control",
+            placeholder: "username"
+          %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <table class="table admin-table change-table">
+      <thead>
+        <tr>
+          <th scope="col">ID Compost</th>
+          <th scope="col">Adresse rdv</th>
+          <th scope="col">Description</th>
+          <th scope="col">Public?</th>
+          <th scope="col">Supprimé par l'Utilisateur?</th>
+          <th scope="col">Utilisateur</th>
+          <th scope="col">Valider les Modifications</th>
+          <th scope="col">Détruire?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @composts.each do |compost| %>
+          <tr>
+            <%= simple_form_for compost do |f| %>
+              <th scope="row"><%= compost.id %></th>
+              <td><%= f.input :address, label: false, input_html: { class: "compost_address" } %></td>
+              <td><%= f.input :description, label: false %></td>
+              <td><%= f.input :public, label: false %></td>
+              <td><%= f.input :deleted, label: false %></td>
+              <td><%= f.association :user, label_method: :username, value_method: :id, include_blank: false, label: false %></td>
+              <td class="text-center"><%= f.submit "OK" %></td>
+              <% end %>
+              <td class="text-center">
+                <%= link_to compost_path(compost), method: :delete do %>
+                  <%= icon('fas', 'trash') %>
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  </div>
+</div>
 
 
 

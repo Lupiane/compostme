@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :composts
   has_many :conversations
   has_many :messages
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   mount_uploader :photo, PhotoUploader
 end
