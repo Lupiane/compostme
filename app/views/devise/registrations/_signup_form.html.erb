@@ -2,13 +2,13 @@
   <%#= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :username, label: false, placeholder: "Pick a username", autofocus: true %>
+    <%= f.input :username, label: :username, autofocus: true %>
     <%= f.input :email, label: false, placeholder: "Your email", required: true %>
     <%= f.input :password, label: false, placeholder: "Your password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, label: false, placeholder: "Password confirmation", required: true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-success" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-success login-btn" %>
   </div>
 <% end %>
