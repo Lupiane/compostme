@@ -6,7 +6,7 @@
       </p>
     <% else %>
       <p class="bold green">
-        <%= icon('fas', 'home')  %> <%= compost.user.username.capitalize %>
+        <%= icon('fas', 'home')  %> <%= compost.user.username ? compost.user.username.capitalize : compost.user.first_name %>
       </p>
     <% end %>
     <p class="grey"><%= compost.address %></p>

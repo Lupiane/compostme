@@ -11,7 +11,7 @@
         <select class="form-control" id="userid">
           <option disabled selected value> -- choisir un utilisateur -- </option>
           <% @users.each do |user| %>
-            <option><%= user.id %>. <%= user.username %></option>
+            <option><%= user.id %>. <%= user.username || user.first_name + " " + user.last_name %></option>
           <% end %>
         </select>
       </div>
@@ -50,10 +50,10 @@
       <div class="search-table">
         <p>Filtrer par utilisateur: </p>
         <%= form_tag dashboard_path, method: :get do %>
-          <%= text_field_tag :username,
-            params[:username],
+          <%= text_field_tag :user_search,
+            params[:user_search],
             class: "form-control",
-            placeholder: "username"
+            placeholder: "username, first name, last name"
           %>
         <% end %>
       </div>
@@ -81,7 +81,7 @@
               <td><%= f.input :description, label: false %></td>
               <td><%= f.input :public, label: false %></td>
               <td><%= f.input :deleted, label: false %></td>
-              <td><%= f.association :user, label_method: :username, value_method: :id, include_blank: false, label: false %></td>
+              <td><%= f.association :user, label_method: :id, value_method: :id, include_blank: false, label: false %></td>
               <td class="text-center"><%= f.submit "OK" %></td>
               <% end %>
               <td class="text-center">

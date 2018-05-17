@@ -90,8 +90,9 @@ class CompostsController < ApplicationController
   def dashboard
     authorize Compost
     @users = User.all.where(admin: false).order(id: :desc)
-    if params[:username].present?
-      user = User.where(username: params[:username])
+    if params[:user_search].present?
+      sql_query = "username ILIKE :query OR first_name ILIKE :query OR last_name ILIKE :query"
+      user = User.where(sql_query, query: "%#{params[:user_search]}%")
       @composts= Compost.where(user: user).order(id: :desc)
     else
       @composts = Compost.all.order(id: :desc)

@@ -1,4 +1,5 @@
-class UsersController < ApplicationController
+class Users::PretenderController < ApplicationController
+
   before_action :require_admin! # your authorization method
 
   def index

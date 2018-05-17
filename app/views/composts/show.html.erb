@@ -1,4 +1,4 @@
-<% content_for(:meta_title) { "compost de #{@compost.user.username.capitalize}" } %>
+<% content_for(:meta_title) { "compost de #{@compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name}" } %>
 <div class="content-container">
   <p class= "text-left">
     <%= link_to composts_path do %>
@@ -9,7 +9,7 @@
     <% if @compost.public %>
       <h3>Compost collectif</h3>
     <% else %>
-      <h3>Compost de <%= @compost.user.username.capitalize %></h3>
+      <h3>Compost de <%= @compost.user.username ?  @compost.user.username.capitalize : @compost.user.first_name %></h3>
     <% end %>
   </div>
   <div class="container">
@@ -37,7 +37,7 @@
         <div class="col-sm-6">
           <div class="form-container">
             <div class="form-heading text-center">
-              <h4>Contactez <%= @compost.user.username.capitalize %>:</h4>
+              <h4>Contactez <%= @compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name %>:</h4>
             </div>
             <%= simple_form_for [@compost, @message] do |f| %>
               <%= f.input :content, label: false, placeholder: "Votre message", input_html: { rows: 8 } %>
