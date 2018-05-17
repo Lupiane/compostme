@@ -1,16 +1,44 @@
 <% content_for(:meta_title) { "Connexion" } %>
-<h2>Log in</h2>
+<div class="content-container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
+      <div class="form-table">
+      <h2>Connexion</h2>
+        <div class="wrap hidden-xs">
+          <div class="left">
+              <%= render "devise/shared/omniauth_link" %>
+          </div>
+          <div class="center">
+            <div class="bar-top-right"></div>
+            <p>ou</p>
+            <div class="bar-bottom-right" id="login"></div>
+          </div>
+          <div class="right">
+            <%= render 'login_form' %>
+          </div>
+        </div>
+        <!-- for mobile navigation -->
+        <div class="wrap-sm hidden-sm hidden-md hidden-lg">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          <div class="left-sm">
+              <%= render "devise/shared/omniauth_link" %>
+          </div>
+
+          <div class="center-sm">
+            <div class="bar-left"></div>
+            <p>or</p>
+            <div class="bar-right"></div>
+          </div>
+
+          <div class="right-sm">
+            <%= render 'login_form' %>
+          </div>
+        </div>
+        <!-- end mobile navigation -->
+      </div>
+      <div class="links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

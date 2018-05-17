@@ -1,0 +1,114 @@
+.form-table {
+  display: table;
+  width: 100%
+}
+.form-table h2 {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.form-table a {
+  text-decoration: none;
+  // color: white;
+  // padding-left: 8px;
+}
+.wrap {
+  display: block;
+  width: 100%;
+}
+.left {
+  width: 45%;
+  float: left;
+  text-align: right;
+  color: white;
+  padding-right: 30px;
+}
+.center {
+  width: 10%;
+  float: left;
+  color: $gray;
+}
+.bar-top-right{
+  border-right: 1px solid $gray;
+  height: 50px;
+  width: 50%;
+}
+.center p {
+  text-align: center;
+  padding: 10px;
+}
+.bar-bottom-right{
+  border-right: 1px solid $gray;
+  height: 218px;
+  width: 50%;
+}
+// #login {
+//   height: 136px;
+// }
+.right {
+  width: 45%;
+  float: right;
+  padding-left: 30px;
+}
+.links {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.links a {
+  color: $gray;
+  text-decoration: none;
+}
+
+.help-block {
+  margin-top: 2px;
+  padding-left: 4px;
+  font-size: 14px;
+}
+.form-actions {
+  text-align: center;
+}
+
+// for mobile navigation
+.wrap-sm {
+  width: 100%;
+}
+.left-sm {
+  width: 100%;
+  float: left;
+  text-align: center;
+  color: white;
+}
+.center-sm {
+  width: 100%;
+  float: none;
+  color: $gray;
+  text-align: center;
+  max-width: 186px;
+  margin: 0 auto;
+}
+.bar-left{
+  border-bottom: 1px solid $gray;
+  height: 10px;
+  width: 75px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  float: left;
+}
+.center-sm p {
+  text-align: center;
+  padding: 10px;
+  float: left;
+}
+.bar-right{
+  border-bottom: 1px solid $gray;
+  height: 10px;
+  width: 75px;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.right-sm {
+  width: 100%;
+  float: left;
+}

@@ -4,7 +4,7 @@
     <% if current_user.photo? %>
       <%= cl_image_tag current_user.photo, height: 150, width: 150, gravity: :face, radius: "20", crop: :fill, fetch_format: :auto %>
     <% elsif current_user.facebook_picture_url %>
-      <%= image_tag current_user.facebook_picture_url %>
+      <%= image_tag current_user.facebook_picture_url, style: "height:150px; width: 150px; border-radius:20px"%>
     <% end %>
   </div>
   <h3><%= current_user.username ? current_user.username.capitalize : current_user.first_name %></h3>

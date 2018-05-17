@@ -1,0 +1,23 @@
+<%#- if devise_mapping.omniauthable? %>
+  <%#- resource_class.omniauth_providers.each do |provider| %>
+    <%#= link_to omniauth_authorize_path(resource_name, provider), class: "btn fb-btn btn-rounded" do %>
+    <%#= resource_name %>
+    <%#= provider %>
+      <%#= icon("fab", "#{provider.to_s.split("_").first}") %>
+      <!-- Sign in with <%#= OmniAuth::Utils.camelize(provider) %> -->
+    <%# end %>
+  <%# end -%>
+<%# end -%>
+
+<div>
+  <%= link_to omniauth_authorize_path(:user, :facebook), class: "btn login-btn fb-btn" do %>
+    <%= icon("fab", "facebook") %>
+    Se connecter avec Facebook
+  <% end %>
+</div>
+<div>
+  <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn login-btn ggl-btn" do %>
+    <%= icon("fab", "google") %>
+    Se connecter avec Google
+  <% end %>
+</div>

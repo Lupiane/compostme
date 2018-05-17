@@ -4,4 +4,41 @@
   font-weight: lighter;
 }
 
+.login-btn {
+  transition: background-color 0.2s ease;
+  width: 304px;
+  height: 54px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: lighter;
+  margin: 24px 0;
+  i {
+    margin-right: 8px;
+  }
+}
 
+.ggl-btn {
+  background-color: white;
+  padding-top: 14px;
+  color: $gray;
+  border: 1px solid  rgba(33, 59, 114, 0.1);
+  i {
+    color: #437AF8;
+  }
+}
+
+.fb-btn {
+  padding-top: 14px;
+  background-color: #3B5998;
+  color: white;
+}
+
+.fb-btn:hover {
+  background-color: #2d467a;
+  color: white;
+}
+
+
+.ggl-btn:hover {
+  background-color: rgba(33, 59, 114, 0.05)
+}
