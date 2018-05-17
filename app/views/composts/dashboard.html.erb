@@ -9,7 +9,7 @@
         <label for="exampleFormControlSelect1">Se faire passer pour: </label>
         <select class="form-control" id="userid">
           <option disabled selected value> -- choisir un utilisateur -- </option>
-          <% @users.order(id: :desc).each do |user| %>
+          <% @users.each do |user| %>
             <option><%= user.id %>. <%= user.username %></option>
           <% end %>
         </select>
