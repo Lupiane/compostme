@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
+  # Overriding Rails.application.default_url_options[:host] to generate absolute
+  # url for images
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
+
   private
 
   def skip_pundit?

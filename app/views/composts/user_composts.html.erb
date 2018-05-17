@@ -1,3 +1,4 @@
+<% content_for(:meta_title) { current_user.username.capitalize } %>
 <div class="profile-head no-margin-container">
   <div>
     <% if current_user.photo? %>
