@@ -3,14 +3,14 @@
 
   <div class="container form-container">
     <div class="form-heading text-center">
-      <h2>Conversation avec <%= current_user == @compost.user ? @conversation.user.username.capitalize : @compost.user.username.capitalize %></h2>
+      <h2>Conversation avec <%= current_user == @compost.user ? (@conversation.user.username ? @conversation.user.username.capitalize : @conversation.user.first_name) : (@compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name) %></h2>
       <h4>Compost: <%= @conversation.compost.address %></h4>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <div class="row">
           <div class="conversation-header">
-            <h4> <%= @conversation.user == current_user ? @conversation.compost.user.username.capitalize : @conversation.user.username.capitalize %></h4>
+            <h4> <%= @conversation.user == current_user ? (@conversation.compost.user.username ? @conversation.compost.user.username.capitalize : @conversation.compost.user.first_name) : (@conversation.user.username ? @conversation.user.username.capitalize : @conversation.user.first_name) %></h4>
             <h4>Vous</h4>
           </div>
           <% @messages.each do |message| %>

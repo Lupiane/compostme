@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   get 'dashboard', to: "composts#dashboard"
   get 'my_composts', to: 'composts#user_composts'
@@ -16,9 +17,9 @@ Rails.application.routes.draw do
     resources :messages, only: :index
   end
 
-  resources :users, only: [:index] do
-    post :impersonate, on: :member
-    post :stop_impersonating, on: :collection
+  resources :users, only: [] do
+    post :impersonate, on: :member, to: "users/pretender#impersonate"
+    post :stop_impersonating, on: :collection, to: "users/pretender#stop_impersonating"
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

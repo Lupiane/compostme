@@ -1,11 +1,13 @@
-<% content_for(:meta_title) { current_user.username.capitalize } %>
+<% content_for(:meta_title) { current_user.username ? current_user.username.capitalize : current_user.first_name } %>
 <div class="profile-head no-margin-container">
   <div>
     <% if current_user.photo? %>
       <%= cl_image_tag current_user.photo, height: 150, width: 150, gravity: :face, radius: "20", crop: :fill, fetch_format: :auto %>
+    <% elsif current_user.facebook_picture_url %>
+      <%= image_tag current_user.facebook_picture_url %>
     <% end %>
   </div>
-  <h3><%= current_user.username.capitalize %></h3>
+  <h3><%= current_user.username ? current_user.username.capitalize : current_user.first_name %></h3>
   <p><%= link_to "Modifier mon profil", edit_user_registration_path %></p>
 </div>
 <div class="content-container">
@@ -59,7 +61,7 @@
             <li><%= link_to conversation_messages_path(c) do %>
                   <%= icon('far', 'comments') %>
                 <% end %>
-              <strong><%= c.user == current_user ? c.compost.user.username.capitalize : c.user.username.capitalize %></strong> - <%= c.compost.address %>
+              <strong><%= c.user == current_user ? (c.compost.user.username ? c.compost.user.username.capitalize : c.compost.user.first_name) : (c.user.username ? c.user.username.capitalize : c.user.first_name) %></strong> - <%= c.compost.address %>
             </li>
           <% end %>
         </ul>
@@ -76,7 +78,7 @@
               <li><%= link_to conversation_messages_path(c) do %>
                     <%= icon('far', 'comments') %>
                   <% end %>
-                <strong><%= c.user == current_user ? c.compost.user.username.capitalize : c.user.username.capitalize %></strong> - <%= c.compost.address %>
+                <strong><%= c.user == current_user ? (c.compost.user.username ? c.compost.user.username.capitalize : c.compost.user.first_name) : (c.user.username ? c.user.username.capitalize : c.user.first_name) %></strong> - <%= c.compost.address %>
               </li>
             <% end %>
           </ul>

@@ -1,21 +1,76 @@
 <% content_for(:meta_title) { "Inscription" } %>
-<h2>Sign up</h2>
+<!-- <h2>Sign up</h2> -->
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%#= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :username, required: true, autofocus: true %>
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+  <!-- <div class="form-inputs"> -->
+    <%#= f.input :username, required: true, autofocus: true %>
+    <%#= f.input :email, required: true, autofocus: true %>
+    <%#= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%#= f.input :password_confirmation, required: true %>
+    <%#= f.input :photo %>
+    <%#= f.input :photo_cache, as: :hidden %>
+  <!-- </div> -->
+
+  <!-- <div class="form-actions"> -->
+    <%#= f.button :submit, "Sign up" %>
+  <!-- </div> -->
+<%# end %>
+
+<%#= render "devise/shared/links" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
+      <div class="form-table">
+        <h2>Sign up</h2>
+        <div class="wrap hidden-xs">
+          <div class="left">
+            <div class="btn fb-btn">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <%= render "devise/shared/omniauth_link" %>
+            </div>
+          </div>
+          <div class="center">
+            <div class="bar-top-right"></div>
+            <p>or</p>
+            <div class="bar-bottom-right"></div>
+          </div>
+          <div class="right">
+            <%= render 'signup_form' %>
+          </div>
+
+        </div>
+
+        <!-- for mobile navigation -->
+        <div class="wrap-sm hidden-sm hidden-md hidden-lg">
+
+          <div class="left-sm">
+            <div class="btn fb-btn">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <%= render "devise/shared/omniauth_link" %>
+            </div>
+          </div>
+
+          <div class="center-sm">
+            <div class="bar-left"></div>
+            <p>or</p>
+            <div class="bar-right"></div>
+          </div>
+
+          <div class="right-sm">
+            <%= render 'signup_form' %>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>

@@ -13,6 +13,8 @@ gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave'
 gem 'pretender'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
