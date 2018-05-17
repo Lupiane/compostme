@@ -1,3 +1,4 @@
+<% content_for(:meta_title) { "compost de #{@compost.user.username.capitalize}" } %>
 <div class="content-container">
   <p class= "text-left">
     <%= link_to composts_path do %>
@@ -8,7 +9,7 @@
     <% if @compost.public %>
       <h3>Compost collectif</h3>
     <% else %>
-      <h3>Le compost de <%= @compost.user.username.capitalize %></h3>
+      <h3>Compost de <%= @compost.user.username.capitalize %></h3>
     <% end %>
   </div>
   <div class="container">
