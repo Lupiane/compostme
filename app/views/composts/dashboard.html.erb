@@ -84,7 +84,7 @@
               <td class="text-center"><%= f.submit "OK" %></td>
               <% end %>
               <td class="text-center">
-                <%= link_to compost_path(compost), data: { confirm: "Voulez-vous vraiment supprimer ce compost?" },method: :delete do %>
+                <%= link_to compost_path(compost), data: { confirm: "La suppression sera définitive" },method: :delete do %>
                   <%= icon('fas', 'trash') %>
                 <% end %>
               </td>
