@@ -3,15 +3,29 @@
 
   <div class="container form-container">
     <div class="form-heading text-center">
-      <h2>Conversation avec <%= current_user == @compost.user ? (@conversation.user.username ? @conversation.user.username.capitalize : @conversation.user.first_name) : (@compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name) %></h2>
+      <h2>Conversation avec <%= @other_user.username ? @other_user.username.capitalize : @other_user.first_name %></h2>
       <h4>Compost: <%= @conversation.compost.address %></h4>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <div class="row">
           <div class="conversation-header">
-            <h4> <%= @conversation.user == current_user ? (@conversation.compost.user.username ? @conversation.compost.user.username.capitalize : @conversation.compost.user.first_name) : (@conversation.user.username ? @conversation.user.username.capitalize : @conversation.user.first_name) %></h4>
-            <h4>Vous</h4>
+            <div class="other_user text-center">
+              <h4><%= @other_user.username ? @other_user.username.capitalize : @other_user.first_name %></h4>
+              <% if @other_user.facebook_picture_url %>
+                <%= image_tag @other_user.facebook_picture_url, class: "avatar" %>
+              <% else %>
+                <%= cl_image_tag @other_user.photo, height: 40, width: 40, crop: :fill, class: "avatar"%>
+              <% end %>
+            </div>
+            <div class="you text-center">
+              <h4>Vous</h4>
+              <% if current_user.facebook_picture_url %>
+                <%= image_tag current_user.facebook_picture_url, class: "avatar" %>
+              <% else %>
+                <%= cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill, class: "avatar"%>
+              <% end %>
+            </div>
           </div>
           <% @messages.each do |message| %>
             <div class="col-xs-12">
