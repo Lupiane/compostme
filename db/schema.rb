@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517132059) do
+ActiveRecord::Schema.define(version: 20180518101145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180517132059) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "username"
-    t.string "photo"
+    t.string "photo", default: "image/upload/v1522224406/contact_compostme.app_sfxgka.png"
     t.string "provider"
     t.string "uid"
     t.string "facebook_picture_url"

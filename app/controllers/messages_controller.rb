@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages.order(created_at: :desc)
     @message = Message.new
     @compost = @conversation.compost
+    @other_user = current_user == @compost.user ? @conversation.user : @compost.user
+    # @you = @conversation.user == current_user ? @conversation.compost.user : @conversation.user
   end
 
   def create
