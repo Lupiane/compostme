@@ -21,7 +21,7 @@
       <% end %>
           <div class="form-container">
             <h4 class="green">Description:</h4>
-            <p class="text-justify"><%= @compost.description %></p>
+            <p class="text-justify"><%= simple_format(@compost.description) %></p>
             <h4 class="green"><%= @compost.public ? "Adresse:" : "Point de rendez-vous:"%></h4>
             <p class="text-justify"><%= @compost.address %></p>
             <div
