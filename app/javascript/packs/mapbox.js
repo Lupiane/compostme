@@ -15,16 +15,26 @@ if (mapElement) {
   var markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach(function(marker) {
+   if (marker.infoWindow) {
+        var popup = new mapboxgl.Popup()
+        .setHTML(marker.infoWindow.content);
+    };
     var mkr = new mapboxgl.Marker({ color: marker.color })
     .setLngLat([marker.lng, marker.lat])
+    .setPopup(popup)
     .addTo(map);
   });
 
   if (mapElement.dataset.pubmrkrs != undefined) {
     const pubmrkrs = JSON.parse(mapElement.dataset.pubmrkrs);
     pubmrkrs.forEach(function(marker) {
+      if (marker.infoWindow) {
+        var popup = new mapboxgl.Popup()
+        .setHTML(marker.infoWindow.content);
+      };
       var mkr = new mapboxgl.Marker({ color: marker.color })
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
       .addTo(map);
     });
     markers = markers.concat(pubmrkrs);
@@ -38,10 +48,11 @@ if (mapElement) {
   } else {
     var bounds = new mapboxgl.LngLatBounds();
     markers.forEach(function(marker) {
-        bounds.extend([marker.lng, marker.lat]);
+      bounds.extend([marker.lng, marker.lat]);
     });
     map.fitBounds(bounds, { padding: 60 });
   };
+}
 
-}autocomplete();
+autocomplete();
 
