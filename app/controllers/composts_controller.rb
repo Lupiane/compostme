@@ -5,8 +5,7 @@ class CompostsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "address ILIKE :query OR description ILIKE :query"
-      @composts = Compost.where.not(deleted: true).where(sql_query, query: "%#{params[:query]}%")
+      @composts = Compost.where.not(deleted: true).near(params[:query], 5)
     else
       @composts = Compost.where.not(deleted: true)
     end
