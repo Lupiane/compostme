@@ -14,19 +14,13 @@
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
-    <!-- Twitter Card data -->
-    <!-- <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%#= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:title" content="<%#= meta_title %>">
-    <meta name="twitter:description" content="<%#= meta_description %>">
-    <meta name="twitter:creator" content="<%#= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:image:src" content="<%#= meta_image %>"> -->
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
 
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -36,9 +30,11 @@
     </div>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js"%>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag "map" %>
+    <%= javascript_pack_tag "mapbox" %>
+
   </body>
 </html>
 

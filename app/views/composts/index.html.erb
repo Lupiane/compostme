@@ -6,7 +6,7 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Rechercher un compost (adresse, code postal, mot-clé...)"
+        placeholder: "Affiner la recherche (adresse, code postal)"
       %>
     <% end %>
     </div>
@@ -27,7 +27,7 @@
                 <% if compost.public %>
                   <p class="bold orange">
                     <%= icon('fas', 'map-signs')  %><br>
-                    Compost public
+                    Compost collectif
                   </p>
                 <% else %>
                   <p class="bold green">
@@ -48,7 +48,7 @@
        <div
           id="map"
           style="width: 100%;
-          height: calc(100vh - 65px);"
+          height: calc(100vh - 130px);"
           data-pubmrkrs="<%= @public_markers.to_json %>"
           data-markers="<%= @markers.to_json %>"
         ></div>

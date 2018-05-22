@@ -1,14 +1,14 @@
 <div id="content">
   <%= link_to compost_path(compost) do %>
     <% if compost.public %>
-      <p class="bold orange">
-        <%= icon('fas', 'map-signs')  %> Compost public
+      <p class="bold orange" style="font-size: 16px">
+        <%= icon('fas', 'map-signs')  %> Compost collectif
       </p>
     <% else %>
-      <p class="bold green">
+      <p class="bold green" style="font-size: 16px">
         <%= icon('fas', 'home')  %> <%= compost.user.username ? compost.user.username.capitalize : compost.user.first_name %>
       </p>
     <% end %>
-    <p class="grey"><%= compost.address %></p>
+    <p class="grey" style="font-size: 13px"><%= compost.address %></p>
   <% end %>
 </div>
