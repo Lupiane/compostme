@@ -5,7 +5,7 @@ class CompostsController < ApplicationController
 
   def index
     if params[:query].present?
-      @composts = Compost.where.not(deleted: true).near(params[:query], 5)
+      @composts = Compost.where.not(deleted: true).near(params[:query], 7)
     else
       @composts = Compost.where.not(deleted: true)
     end
@@ -18,7 +18,7 @@ class CompostsController < ApplicationController
       {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/44B59E/",
+        color: "#44B59E",
         infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end
@@ -26,7 +26,7 @@ class CompostsController < ApplicationController
        {
         lat: compost.latitude,
         lng: compost.longitude,
-        icon: "http://www.googlemapsmarkers.com/v1/E67E22/",
+        color: "#E67E22",
         infoWindow: { content: render_to_string(partial: "/composts/map_box", locals: { compost: compost }) }
       }
     end
@@ -34,11 +34,10 @@ class CompostsController < ApplicationController
 
   def show
     @message = Message.new
-    marker_color_code = @compost.public ? "E67E22" : "44B59E"
     @markers = [{
       lat: @compost.latitude,
       lng: @compost.longitude,
-      icon: "http://www.googlemapsmarkers.com/v1/#{marker_color_code}/"
+      color: @compost.public ? "#E67E22" : "#44B59E"
     }]
   end
 
