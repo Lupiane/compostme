@@ -39,6 +39,13 @@
   width: 40%;
 }
 
+.admin-table {
+  .form-group {
+    margin-bottom: 0;
+    padding: 5px 0;
+  }
+ }
+
 .search-table-container {
   margin-left: 70%;
 
@@ -50,4 +57,12 @@
   p {
     margin: 0;
   }
+}
+
+.profile-table th:nth-child(1) {
+  width: 24%;
+}
+
+.profile-table th:nth-child(3), th:nth-child(4) {
+  width: 8%;
 }

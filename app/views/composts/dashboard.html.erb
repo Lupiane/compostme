@@ -24,7 +24,6 @@
   <div class="content-container profile-list">
     <h4>Ajouter un compost (collectif)</h4>
     <table class="table admin-table new-table">
-      <tbody>
         <thead>
         <tr>
           <th scope="col">Adresse</th>
@@ -32,9 +31,13 @@
           <th scope="col"></th>
         </tr>
       </thead>
+      <tbody>
         <tr>
           <%= simple_form_for @compost do |f| %>
-            <td><%= f.input :address, label: false, input_html: { class: "compost_address" }, placeholder: "Adresse du compost"  %></td>
+            <td><%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "compost0" } %>
+              <div id="geocoder0"></div>
+              <div id="fakemap0"></div>
+            </td>
               <td><%= f.input :description, label: false %>
               <%= f.input :public, as: :hidden, input_html: { value: true }, label: false %></td>
               <td><%= f.submit "Créer" %></td>
@@ -77,7 +80,11 @@
           <tr>
             <%= simple_form_for compost do |f| %>
               <th scope="row"><%= compost.id %></th>
-              <td><%= f.input :address, label: false, input_html: { class: "compost_address" } %></td>
+              <td>
+                <div id='geocoder<%= compost.id ? compost.id : 0 %>'></div>
+                <div id='fakemap<%= compost.id ? compost.id : 0 %>'></div>
+                <%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "compost#{compost.id ? compost.id : 0}" } %>
+              </td>
               <td><%= f.input :description, label: false %></td>
               <td><%= f.input :public, label: false %></td>
               <td><%= f.input :deleted, label: false %></td>

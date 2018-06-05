@@ -18,9 +18,9 @@
     <%= favicon_link_tag %>
 
     <%= action_cable_meta_tag %>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -31,10 +31,9 @@
     <%= render 'shared/footer' %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js"%>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+    <%#= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag "mapbox" %>
-
   </body>
 </html>
 

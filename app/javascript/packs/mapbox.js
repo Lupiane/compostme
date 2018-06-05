@@ -1,7 +1,6 @@
 import mapboxgl from 'mapbox-gl';
-import { autocomplete } from '../components/autocomplete';
 
-mapboxgl.accessToken = "pk.eyJ1IjoibHVwaWFuZSIsImEiOiJjamhobnlhNDgyM3loMzBzNjdlNjd0cDd4In0.Bi6PxCUwLgCJTlmZ6zjVEA";
+mapboxgl.accessToken = "pk.eyJ1IjoibHVwaWFuZSIsImEiOiJjamkxbHN2dXkwYzJkM2tzNzZqZGx3ZnZ0In0.OG1oUjCPBbtjwmyRZFU9nQ";
 
 const mapElement = document.getElementById('map');
 if (mapElement) {
@@ -54,5 +53,4 @@ if (mapElement) {
   };
 }
 
-autocomplete();
 
