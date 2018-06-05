@@ -34,7 +34,7 @@
       <tbody>
         <tr>
           <%= simple_form_for @compost do |f| %>
-            <td><%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "compost0" } %>
+            <td><%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "0" } %>
               <div id="geocoder0"></div>
               <div id="fakemap0"></div>
             </td>
@@ -83,7 +83,7 @@
               <td>
                 <div id='geocoder<%= compost.id ? compost.id : 0 %>'></div>
                 <div id='fakemap<%= compost.id ? compost.id : 0 %>'></div>
-                <%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "compost#{compost.id ? compost.id : 0}" } %>
+                <%= f.input :address, label: false, input_html: { class: "compost_address", type: "hidden", id: "#{compost.id ? compost.id : 0}" } %>
               </td>
               <td><%= f.input :description, label: false %></td>
               <td><%= f.input :public, label: false %></td>

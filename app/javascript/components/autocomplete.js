@@ -8,7 +8,7 @@ function autocomplete() {
 
     if (addresses.length >= 1) {
       addresses.forEach((address) => {
-        var compostId = address.id.slice(-1);
+        var compostId = address.id;
         var map = new mapboxgl.Map({
           container: `fakemap${compostId}`,
           style: 'mapbox://styles/mapbox/streets-v9',
