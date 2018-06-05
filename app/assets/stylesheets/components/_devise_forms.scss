@@ -112,3 +112,31 @@
   width: 100%;
   float: left;
 }
+
+.geocoder-pin-right {
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder input {
+  width: 100%;
+  padding: 6px 12px;
+}
+.suggestions {
+  list-style-type: none;
+  li {
+    margin-left: -25px;
+    font-weight: lighter;
+    font-size: 15px;
+    a {
+    color: $gray;
+    text-decoration: none;
+    }
+    a:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.address-label {
+  margin-bottom: 5px;
+}

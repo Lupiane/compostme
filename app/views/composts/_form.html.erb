@@ -1,4 +1,7 @@
+
 <%= simple_form_for(compost) do |f| %>
+  <div id='geocoder'></div>
+  <div id='fakemap'></div>
   <%= f.input :address, input_html: { class: "compost_address", type: "hidden" }, label: false, placeholder: "votre point de rendez-vous" %>
   <%= f.input :description, label: "Description", placeholder: "type de bio-déchets que vous acceptez, modalités de rendez-vous, etc. ", input_html: { rows: 8 } %>
   <div class="form-submit text-center">
