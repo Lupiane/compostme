@@ -14,7 +14,7 @@
   <div class="profile-list">
     <% unless @composts.empty? %>
       <h4>Mes Composts</h4>
-      <table class="table table-bordered">
+      <table class="table profile-table table-bordered">
         <thead>
           <tr>
             <th scope="col">Point de rdv</th>
@@ -88,26 +88,6 @@
     </div>
   </div>
 
-<!-- <h4>Ajouter un Compost</h4>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Point de rdv</th>
-      <th scope="col">Description</th>
-      <th scope="col">Créer</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%#= simple_form_for @compost do |f|%>
-      <tr>
-        <td><%#= f.input :address, label: false %></td>
-        <td><%#= f.input :description, label: false %></td>
-        <td><%#= f.submit "OK" %></td>
-      </tr>
-    <%# end %>
-  </tbody>
-</table> -->
-
 <!-- Update Modal -->
   <% @composts.each do |compost| %>
     <div class="modal fade" id="updateCompost<%=compost.id%>" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
@@ -120,12 +100,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <p class="address-label">* Adresse </p>
+            <p class="address-label">* Point de rendez-vous </p>
             <%= render 'form', compost: compost %>
           </div>
-         <!--  <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div> -->
         </div>
       </div>
     </div>
@@ -157,12 +134,9 @@
             </p>
             <div class="text-center"><%= icon('far', 'smile') %></div>
           </div>
-          <p class="address-label">* Adresse </p>
+          <p class="address-label">* Point de rendez-vous </p>
           <%= render 'form', compost: @compost %>
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div> -->
       </div>
     </div>
   </div>

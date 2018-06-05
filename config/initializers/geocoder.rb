@@ -4,7 +4,7 @@ Geocoder.configure(
   lookup: :nominatim,            # name of geocoding service (symbol)
   # language: :en,              # ISO-639 language code
   use_https: true,              # use HTTPS for lookup requests? (if supported)
-  http_headers: { "User-Agent" => "lupiane@hotmail.com" },
+  http_headers: { "User-Agent" => ENV['GEOCODER_USER_AGENT'] },
   # http_proxy: nil,            # HTTP proxy server (user:pass@host:port)
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   # api_key: ENV['GOOGLE_API_SERVER_KEY'],               # API key for geocoding service

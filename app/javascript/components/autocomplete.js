@@ -3,84 +3,39 @@ import MapboxGeocoder from 'mapbox-gl-geocoder';
 
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var addresses = document.querySelectorAll('.compost_address')
+    var addresses = document.querySelectorAll('.form-control.compost_address')
+    mapboxgl.accessToken = 'pk.eyJ1IjoibHVwaWFuZSIsImEiOiJjamkxbHN2dXkwYzJkM2tzNzZqZGx3ZnZ0In0.OG1oUjCPBbtjwmyRZFU9nQ';
 
     if (addresses.length >= 1) {
-      mapboxgl.accessToken = 'pk.eyJ1IjoibHVwaWFuZSIsImEiOiJjamhobnlhNDgyM3loMzBzNjdlNjd0cDd4In0.Bi6PxCUwLgCJTlmZ6zjVEA';
+      addresses.forEach((address) => {
+        var compostId = address.id.slice(-1);
+        var map = new mapboxgl.Map({
+          container: `fakemap${compostId}`,
+          style: 'mapbox://styles/mapbox/streets-v9',
+          center: [-79.4512, 43.6568],
+          zoom: 13
+        });
 
-      var map = new mapboxgl.Map({
-        container: 'fakemap',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        center: [-79.4512, 43.6568],
-        zoom: 13
-      });
 
+        var geocoder = new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          autocomplete: true,
+          placeholder: "adresse"
+        });
 
-      var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        autocomplete: true,
-        placeholder: "votre point de rendez-vous"
-      });
+        document.getElementById(`geocoder${compostId}`).appendChild(geocoder.onAdd(map));
 
-      document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+        if (address.value != "") {
+          document.querySelector(`#geocoder${compostId} > .mapboxgl-ctrl-geocoder > input`).value = address.value;
+        };
 
-      var compostAddress = document.getElementById('compost_address')
+        document.querySelector(`#geocoder${compostId} > .mapboxgl-ctrl-geocoder > input`).addEventListener("change", function(e) {
+          address.value = geocoder._typeahead.selected.place_name;
+        })
 
-      document.querySelector(".mapboxgl-ctrl-geocoder > input").addEventListener("change", function(e) {
-        console.log(geocoder._typeahead.selected.place_name);
-        compostAddress.value = geocoder._typeahead.selected.place_name;
       })
-
-
-
-
-
-
-
-      // addresses.forEach((addressField) => {
-      //   // REWRITE EVENT LISTENER - no longer to be linked to compostAddress addressField
-      //   addressField.addEventListener("focus", (e) => {
-      //     var compostAddress = e.currentTarget;
-      //     if (compostAddress) {
-      //       // var autocomplete = new google.maps.places.Autocomplete(compostAddress, { types: [ 'geocode' ] });
-      //       // google.maps.event.addDomListener(compostAddress, 'keydown', function(e) {
-      //       //   if (e.key === "Enter") {
-      //       //     e.preventDefault(); // Do not submit the form on Enter.
-      //       //   }
-      //       // });
-
-
-      //       // query the geocoder
-
-      //       // add event listener so query updates with user typing
-
-      //       // geocoder.addDomListener(compostAddress, 'keydown', function(e) {
-      //       //   if (e.key === "Enter") {
-      //       //     e.preventDefault(); // Do not submit the form on Enter.
-      //       //   }
-      //       // });
-      //     }
-      //   });
-      // });
-
-
-
-
-
-
-
     };
   });
 }
 
 export { autocomplete };
-
-// <script>
-// mapboxgl.accessToken = 'pk.eyJ1IjoibHVwaWFuZSIsImEiOiJjamhobnlhNDgyM3loMzBzNjdlNjd0cDd4In0.Bi6PxCUwLgCJTlmZ6zjVEA';
-
-// var geocoder = new MapboxGeocoder({
-//     accessToken: mapboxgl.accessToken
-// });
-
-// document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-// </script>

@@ -121,8 +121,14 @@
   width: 100%;
   padding: 6px 12px;
 }
+
+.geocoder {
+  margin-bottom: 15px;
+}
+
 .suggestions {
   list-style-type: none;
+  text-align: left;
   li {
     margin-left: -25px;
     font-weight: lighter;
@@ -135,6 +141,10 @@
       cursor: pointer;
     }
   }
+}
+
+.compost_address {
+  display: none;
 }
 
 .address-label {
