@@ -10,10 +10,11 @@
   <h3><%= current_user.username ? current_user.username.capitalize : current_user.first_name %></h3>
   <p><%= link_to "Modifier mon profil", edit_user_registration_path %></p>
 </div>
-<div class="content-container">
+<div class="content-container" style="background-image:
+         url('<%= cl_image_path "markus-spiske-139525-unsplash_rsrj1v.jpg", :gravity=>"east", :opacity=>40, :width=>2000, :crop=>"fill" %>')">
   <div class="profile-list">
     <% unless @composts.empty? %>
-      <h4>Mes Composts</h4>
+      <h4>Mes Composteurs</h4>
       <table class="table profile-table table-bordered">
         <thead>
           <tr>
@@ -33,7 +34,7 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to remove_compost_path(compost) do %>
+                <%= link_to remove_compost_path(compost), data: { confirm: "Etes-vous sûr de vouloir supprimer ce composteur?" } do %>
                   <%= icon('fas', 'trash') %>
                 <% end %>
               </td>
@@ -43,7 +44,7 @@
       </table>
     <% end %>
     <div class="text-center">
-      <%= link_to "Ajouter un compost", "#", "data-toggle": 'modal', "data-target": "#newCompost"%>
+      <%= link_to "Ajouter un composteur", "#", "data-toggle": 'modal', "data-target": "#newCompost"%>
     </div>
   </div>
 
@@ -52,7 +53,7 @@
     <h4>Mes Conversations</h4>
     <div class="conv">
     <div>
-      <h5>Conversations sur mes composts</h5>
+      <h5>Conversations sur mes composteurs</h5>
       <% if @compost_conversations.empty? %>
         <p><i>Aucune conversation</i></p>
       <% else %>
@@ -94,7 +95,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header flex-content">
-            <h5 class="modal-title" id="updateLabel">Modifier les informations du compost</h5>
+            <h5 class="modal-title" id="updateLabel">Modifier les informations du composteur</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -113,7 +114,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header flex-content">
-          <h5 class="modal-title" id="updateLabel">Ajouter votre compost</h5>
+          <h5 class="modal-title" id="updateLabel">Ajouter votre composteur</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

@@ -1,6 +1,11 @@
 <% content_for(:meta_title) { "Modifier votre profil" } %>
 
 <div class="content-container">
+   <p class= "text-left">
+    <%= link_to :back do %>
+     <%= icon('fas', 'arrow-left') %> Retour
+    <% end %>
+  </p>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -46,4 +51,3 @@
 
 <p>Unhappy? <%#= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
 
-<%= link_to "Back", :back %>

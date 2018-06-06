@@ -1,10 +1,11 @@
 <% content_for(:meta_title) { "Messagerie" } %>
-<div class="content-container">
+<div class="content-container" style="background-image:
+         url('<%= cl_image_path "chinh-le-duc-264152-unsplash_srx6si.jpg", :gravity=>"south", :opacity=>20, :width=>2000, :crop=>"fill" %>')">
 
   <div class="container form-container">
     <div class="form-heading text-center">
       <h2>Conversation avec <%= @other_user.username ? @other_user.username.capitalize : @other_user.first_name %></h2>
-      <h4>Compost: <%= @conversation.compost.address %></h4>
+      <h4>Composteur: <%= @conversation.compost.address %></h4>
     </div>
     <div class="row">
       <div class="col-sm-6">

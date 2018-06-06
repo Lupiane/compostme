@@ -31,6 +31,12 @@ p, a {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.info-row {
+  background-color: white;
+  box-shadow: 1px 1px 2px rgba(0,0,0, 0.1);
 }
 
 .content-item {
@@ -53,9 +59,16 @@ p, a {
 
 
 .home-info {
+  background-color: white;
+  // border: 1px solid black;
+  overflow: scroll;
+  padding: 20px;
+  height: 376px;
+
   li {
     font-weight: lighter;
     font-size: 16px;
+    margin-bottom: 5px;
   }
   a {
     color: $green;
@@ -63,10 +76,7 @@ p, a {
   }
 }
 
-// font testing
-// .compact {
-//   letter-spacing: -4px;
-//   // text-decoration: underline;
-// }
-
+.border-right {
+  border-right: 1px solid rgba(0,0,0, 0.1);
+}
 

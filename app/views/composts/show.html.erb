@@ -1,5 +1,6 @@
-<% content_for(:meta_title) { "compost de #{@compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name}" } %>
-<div class="content-container">
+<% content_for(:meta_title) { @compost.public ? "composteur collectif" : ("composteur de #{@compost.user.username ? @compost.user.username.capitalize : @compost.user.first_name}") } %>
+<div class="content-container" style="background-image:
+         url('<%= cl_image_path "caroline-attwood-225496-unsplash_sgbrxj.jpg", :gravity=>"south", :opacity=>20, :width=>2000, :crop=>"fill" %>')">
   <p class= "text-left">
     <%= link_to composts_path do %>
      <%= icon('fas', 'arrow-left') %> Retour à la liste
@@ -7,9 +8,9 @@
   </p>
   <div class="text-center form-heading">
     <% if @compost.public %>
-      <h3>Compost collectif</h3>
+      <h3>Composteur collectif</h3>
     <% else %>
-      <h3>Compost de <%= @compost.user.username ?  @compost.user.username.capitalize : @compost.user.first_name %></h3>
+      <h3>Composteur de <%= @compost.user.username ?  @compost.user.username.capitalize : @compost.user.first_name %></h3>
     <% end %>
   </div>
   <div class="container">
@@ -52,19 +53,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- <div>
-  <%# unless @compost.public %>
-    <h4>Ecrire un nouveau message:</h4>
-    <%# if @messages %>
-      <ul>
-        <%# @messages.each do |message| %>
-          <li>le <%#= @message.created_at %>, <%#= @message.user.username %> a écrit: </li>
-          <li><%#= @message.content %></li>
-          <br>
-        <%# end %>
-      </ul>
-    <%# end %>
-  <%# end %>
-</div> -->
