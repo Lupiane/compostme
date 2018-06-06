@@ -1,4 +1,4 @@
-<% content_for(:meta_title) { "Trouvez un compost" } %>
+<% content_for(:meta_title) { "Trouvez un composteur" } %>
 <div class="container no-margin-container">
   <div id="index-head">
     <div id="search-head"><%= icon('fas', 'search') %>
@@ -14,10 +14,11 @@
       <%= link_to new_compost_path do%>
         <%= icon('far', 'plus-square') %>
       <% end %>
-      <p>Ajouter un compost </p>
+      <p>Ajouter un composteur </p>
     </div>
   </div>
-  <div class="row" style="width: 100%; margin-left: 0;">
+  <div class="row" style="width: 100%; margin-left: 0; background-image:
+         url('<%= cl_image_path "francesco-gallarotti-72602-unsplash_sni65w.jpg", :gravity=>"south", :opacity=>60, :width=>1500, :crop=>"fill" %>')">
     <div class="col-xs-12 col-sm-7">
       <div class="row card-container">
         <% @composts.each do |compost| %>
@@ -27,7 +28,7 @@
                 <% if compost.public %>
                   <p class="bold orange">
                     <%= icon('fas', 'map-signs')  %><br>
-                    Compost collectif
+                    Composteur collectif
                   </p>
                 <% else %>
                   <p class="bold green">

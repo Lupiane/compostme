@@ -22,7 +22,7 @@
   </div>
 
   <div class="content-container profile-list">
-    <h4>Ajouter un compost (collectif)</h4>
+    <h4>Ajouter un composteur (collectif)</h4>
     <table class="table admin-table new-table">
         <thead>
         <tr>
@@ -48,7 +48,7 @@
   </div>
 
   <div class="content-container profile-list">
-    <h4>Modifier un compost</h4>
+    <h4>Modifier un composteur</h4>
     <div class="search-table-container">
       <div class="search-table">
         <p>Filtrer par utilisateur: </p>
@@ -65,7 +65,7 @@
     <table class="table admin-table change-table">
       <thead>
         <tr>
-          <th scope="col">ID Compost</th>
+          <th scope="col">ID Composteur</th>
           <th scope="col">Adresse rdv</th>
           <th scope="col">Description</th>
           <th scope="col">Collectif?</th>
@@ -92,7 +92,7 @@
               <td class="text-center"><%= f.submit "OK" %></td>
               <% end %>
               <td class="text-center">
-                <%= link_to compost_path(compost), data: { confirm: "La suppression sera définitive" },method: :delete do %>
+                <%= link_to compost_path(compost), data: { confirm: "La suppression sera définitive" }, method: :delete do %>
                   <%= icon('fas', 'trash') %>
                 <% end %>
               </td>

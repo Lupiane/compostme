@@ -1,4 +1,4 @@
-<% content_for(:meta_title) { "Ajoutez votre compost" } %>
+<% content_for(:meta_title) { "Ajoutez votre composteur" } %>
 <div class="content-container">
   <p class="text-left">
     <%= link_to composts_path do %>
@@ -19,7 +19,7 @@
           <p class="text-justify"> Par conséquent, essayez dans la mesure du possible d'indiquer <strong>un point de rendez-vous qui n'est pas l'adresse de votre domicile </strong> (pourquoi pas le coin de votre rue, la gare où vous passez tous les matins, le square où vous emmenez vos enfants tous les jours?)
           </p>
           <p class="text-justify">
-            Cela vous permettra ensuite de dire en toute tranquillité: <i>"Non, je ne peux pas récupérer tes biodéchets ce weekend, je fais le pont à l'autre bout de la France..."</i>
+            Cela vous permettra ensuite de dire en toute tranquillité: <i>"Non, je ne peux pas récupérer tes bio-déchets ce weekend, je fais le pont à l'autre bout de la France..."</i>
           </p>
           <div class="text-center"><%= icon('far', 'smile') %></div>
         </div>
@@ -27,14 +27,14 @@
       <div class="col-xs-12 col-sm-6 col-sm-pull-6">
         <div class="form-container">
           <div class="form-heading text-center">
-            <h3>Collectez pour votre compost</h3>
+            <h3>Collectez pour votre composteur</h3>
           </div>
           <p class="address-label">* Point de rendez-vous </p>
           <%= render "form", compost: @compost %>
           <div class="text-center">
             <br>
             <br>
-            <p>Vous voulez ajouter un compost collectif?</p>
+            <p>Vous voulez nous signaler un composteur collectif?</p>
             <%= link_to "Contactez-nous", "mailto:contact@compostme.app"%>
           </div>
         </div>
