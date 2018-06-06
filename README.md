@@ -2,4 +2,4 @@ CompostMe was created with the objective of bringing together people who wish to
 
 CompostMe also aims at referencing collective composts that are managed by associations, cities, etc...
 
-CompostMe is a constant WIP (seriously, you should see the to-do list), with lots of new features and improvements on the cards. Feel free to collaborate, regardless of your skill level or expertise :)
+CompostMe is a constant WIP (seriously, you should see the to-do list), with lots of new features and improvements on the cards - translation into English being at the top of the list. Feel free to collaborate, regardless of your skill level or expertise :)
